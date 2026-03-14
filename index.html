@@ -3,25 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PropNex AI Masterclass - Google Ecosystem Edition</title>
+    <title>PropNex AI Masterclass - Ultimate Edition</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
-            --bg-main: #020617; 
+            /* Dark Mode with Vibrant Accents (Projector Friendly) */
+            --bg-main: #020617; /* Deep Slate */
             --bg-card: #0f172a;
             --bg-card-hover: #1e293b;
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
             
-            --accent-blue: #38bdf8; 
-            --accent-pink: #ec4899; 
-            --accent-green: #10b981; 
-            --accent-orange: #f59e0b; 
-            --accent-purple: #a855f7; 
+            /* Vibrant Accents */
+            --accent-blue: #38bdf8; /* Bright Sky Blue */
+            --accent-pink: #ec4899; /* Vibrant Pink */
+            --accent-green: #10b981; /* Emerald Green */
+            --accent-orange: #f59e0b; /* Amber */
+            --accent-purple: #a855f7; /* Purple */
+            --accent-red: #ef4444;
             
+            /* AI Brand Colors */
             --brand-chatgpt: #10a37f;
             --brand-claude: #d97757;
             --brand-gemini: #8b5cf6;
@@ -29,8 +33,9 @@
             --brand-notebooklm: #4285f4;
 
             --border-color: rgba(255, 255, 255, 0.1);
+            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
             --shadow-lg: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
-            --shadow-glow: 0 0 30px rgba(56, 189, 248, 0.15);
+            --shadow-glow: 0 0 30px rgba(56, 189, 248, 0.2);
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -44,26 +49,59 @@
             width: 100vw;
             display: flex;
             flex-direction: column;
+            /* Vibrant but dark background glows */
             background-image: 
-                radial-gradient(circle at 15% 15%, rgba(236, 72, 153, 0.03) 0px, transparent 40%),
-                radial-gradient(circle at 85% 15%, rgba(56, 189, 248, 0.03) 0px, transparent 40%),
-                radial-gradient(circle at 50% 85%, rgba(16, 185, 129, 0.03) 0px, transparent 40%);
+                radial-gradient(circle at 15% 15%, rgba(236, 72, 153, 0.05) 0px, transparent 40%),
+                radial-gradient(circle at 85% 15%, rgba(56, 189, 248, 0.05) 0px, transparent 40%),
+                radial-gradient(circle at 50% 85%, rgba(16, 185, 129, 0.05) 0px, transparent 40%);
         }
 
         /* --- SLIDE CONTAINER --- */
-        #app-container { position: relative; z-index: 1; flex-grow: 1; display: flex; justify-content: center; align-items: center; padding: 2rem; height: calc(100vh - 80px); }
-        .slide { background-color: var(--bg-card); border-radius: 20px; box-shadow: var(--shadow-lg); border: 1px solid var(--border-color); width: 100%; max-width: 1400px; height: 100%; padding: clamp(2rem, 4vw, 3rem); display: none; flex-direction: column; opacity: 0; transform: scale(0.98) translateY(10px); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); overflow-y: auto; }
+        #app-container {
+            position: relative;
+            z-index: 1;
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            height: calc(100vh - 80px);
+        }
+
+        .slide {
+            background-color: var(--bg-card);
+            border-radius: 20px; 
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border-color);
+            width: 100%;
+            max-width: 1400px;
+            height: 100%;
+            padding: clamp(2rem, 4vw, 3rem);
+            display: none;
+            flex-direction: column;
+            opacity: 0;
+            transform: scale(0.98) translateY(10px);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+            overflow-y: auto;
+        }
+
         .slide.active { display: flex; opacity: 1; transform: scale(1) translateY(0); }
+
+        /* Scrollbar */
         .slide::-webkit-scrollbar { width: 8px; }
         .slide::-webkit-scrollbar-track { background: transparent; }
         .slide::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+        .slide::-webkit-scrollbar-thumb:hover { background: #475569; }
 
         /* --- TYPOGRAPHY --- */
         h1 { font-size: clamp(3rem, 5vw, 4.5rem); font-weight: 800; line-height: 1.1; letter-spacing: -1px; margin-bottom: 1rem; color: var(--text-main); }
         h2.slide-title { font-size: clamp(2rem, 3vw, 2.8rem); font-weight: 800; margin-bottom: 0.5rem; color: var(--text-main); }
         .slide-subtitle { font-size: clamp(1.1rem, 1.5vw, 1.4rem); color: var(--text-muted); font-weight: 600; display: block; margin-bottom: 2rem; }
-        p { font-size: clamp(1.1rem, 1.3vw, 1.2rem); color: var(--text-muted); line-height: 1.6; }
+        p { font-size: clamp(1.1rem, 1.5vw, 1.3rem); color: var(--text-muted); line-height: 1.6; }
+
+        /* Text Gradients */
         .gradient-text { background: linear-gradient(135deg, var(--accent-blue), var(--accent-pink)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .gradient-green { background: linear-gradient(135deg, var(--accent-green), var(--accent-blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
         /* --- LAYOUT UTILITIES --- */
         .content-area { display: flex; flex-direction: column; flex-grow: 1; justify-content: center; height: 100%; }
@@ -74,26 +112,68 @@
         .split-40-60 { display: grid; grid-template-columns: 4fr 6fr; gap: 40px; align-items: stretch; height: 100%; }
         
         /* --- CARDS & UI COMPONENTS --- */
-        .card { background-color: var(--bg-card-hover); border-radius: 16px; padding: 2rem; border: 1px solid var(--border-color); box-shadow: var(--shadow-sm); display: flex; flex-direction: column; position: relative; overflow: hidden; }
-        .card h3 { font-size: 1.6rem; margin-bottom: 1rem; color: var(--text-main); font-weight: 700; }
-        .card-top-bar { position: absolute; top: 0; left: 0; width: 100%; height: 6px; }
+        .card {
+            background-color: var(--bg-card-hover); border-radius: 16px; padding: 2.5rem; border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm); display: flex; flex-direction: column; position: relative; overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .card:hover { transform: translateY(-5px); box-shadow: var(--shadow-glow); border-color: var(--text-muted); }
+        .card h3 { font-size: 1.8rem; margin-bottom: 1rem; color: var(--text-main); font-weight: 700; }
+        .card-top-bar { position: absolute; top: 0; left: 0; width: 100%; height: 6px; background: var(--accent-blue); }
 
-        ul.stage-list { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; margin-top: 1rem; }
-        ul.stage-list li { display: flex; align-items: flex-start; gap: 1rem; font-size: 1.1rem; color: var(--text-main); line-height: 1.5; }
-        ul.stage-list li i { font-size: 1.1rem; margin-top: 0.3rem; flex-shrink: 0; }
+        ul.stage-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem; }
+        ul.stage-list li { display: flex; align-items: flex-start; gap: 1rem; font-size: 1.2rem; color: var(--text-main); line-height: 1.5; }
+        ul.stage-list li i { font-size: 1.2rem; margin-top: 0.3rem; flex-shrink: 0; color: var(--accent-blue); }
 
-        .prompt-block { background: #020617; border-left: 4px solid var(--accent-pink); border-radius: 8px; padding: 1.2rem 1.5rem; font-family: 'Courier New', Courier, monospace; color: var(--accent-green); font-size: 1.1rem; line-height: 1.5; font-weight: 600; white-space: pre-wrap; width: 100%; margin-top: 1rem; }
+        .prompt-block {
+            background: #020617; border-left: 4px solid var(--accent-pink); border-radius: 8px;
+            padding: 1.5rem; font-family: 'Courier New', Courier, monospace; color: var(--accent-green);
+            font-size: 1.15rem; line-height: 1.6; font-weight: 600; white-space: pre-wrap; width: 100%; margin-top: 1rem;
+        }
 
         /* --- Brand Logos --- */
         .brand-logo { display: inline-flex; align-items: center; justify-content: center; }
         .logo-cell { display: flex; align-items: center; gap: 15px; font-weight: 700; font-size: 1.2rem; }
         .logo-cell svg { width: 32px; height: 32px; flex-shrink: 0; }
 
-        /* --- INTERACTIVE: COMPARISON TABLE --- */
+        /* --- INTERACTIVE: AT A GLANCE FORMULA --- */
+        .formula-container { display: flex; flex-direction: column; gap: 2rem; width: 100%; }
+        .formula-blocks-row { display: flex; justify-content: center; align-items: center; gap: 1rem; flex-wrap: wrap; }
+        .f-block {
+            background: var(--bg-card-hover); border: 2px solid var(--border-color); border-radius: 12px;
+            padding: 1rem 1.5rem; font-size: 1.5rem; font-weight: 800; color: var(--text-muted);
+            cursor: pointer; transition: all 0.2s; text-align: center; flex: 1; min-width: 120px;
+        }
+        .f-block:hover, .f-block.active { border-color: var(--accent-blue); color: var(--accent-blue); transform: scale(1.05); background: rgba(56, 189, 248, 0.1); }
+        .f-plus { font-size: 2rem; color: #475569; font-weight: 800; }
+        
+        .formula-dashboard { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; width: 100%; }
+        .f-detail-card {
+            background: var(--bg-card-hover); border-radius: 12px; padding: 1.5rem; border: 1px solid var(--border-color);
+            transition: all 0.3s ease; display: flex; flex-direction: column; align-items: center; text-align: center;
+        }
+        .f-detail-card.highlight { background: #020617; border-color: var(--accent-blue); box-shadow: var(--shadow-glow); transform: translateY(-10px); }
+        .f-detail-card i { font-size: 2.5rem; color: var(--accent-blue); margin-bottom: 1rem; }
+        .f-detail-card h4 { font-size: 1.4rem; margin-bottom: 0.5rem; color: var(--text-main); font-weight: 800; }
+        .f-detail-card p.core { font-size: 1rem; color: #fff; font-weight: 700; margin-bottom: 1rem; padding: 0.3rem 0.8rem; border-radius: 50px; }
+        .f-detail-card p.desc { font-size: 1rem; color: var(--text-muted); line-height: 1.4; text-align: left; }
+
+        /* --- INTERACTIVE: COMPARISON TABLE & ACCORDIONS --- */
         table.styled-table { width: 100%; border-collapse: separate; border-spacing: 0; border-radius: 12px; overflow: hidden; border: 1px solid var(--border-color); }
         table.styled-table th, table.styled-table td { padding: 1.2rem 1.5rem; text-align: left; background: var(--bg-card-hover); border-bottom: 1px solid var(--border-color); font-size: 1.1rem; }
-        table.styled-table th { background: #020617; color: var(--text-main); font-weight: 800; text-transform: uppercase; letter-spacing: 1px; font-size: 1rem;}
+        table.styled-table th { background: #020617; color: var(--accent-blue); font-weight: 800; text-transform: uppercase; letter-spacing: 1px; font-size: 1rem;}
         table.styled-table tr:last-child td { border-bottom: none; }
+
+        .accordion { display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem;}
+        .acc-item { background: var(--bg-card-hover); border: 1px solid var(--border-color); border-radius: 12px; overflow: hidden; transition: all 0.3s; }
+        .acc-header { padding: 1.2rem 1.5rem; background: #020617; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-weight: 700; font-size: 1.3rem; color: var(--text-main); }
+        .acc-header:hover { background: #0f172a; }
+        .acc-header i.icon-main { margin-right: 1rem; font-size: 1.5rem; width: 30px; text-align: center;}
+        .acc-header i.toggle-icon { transition: transform 0.3s; }
+        .acc-content { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0, 1, 0, 1); background: var(--bg-card-hover); }
+        .acc-item.open .acc-content { max-height: 1000px; transition: max-height 0.4s ease-in-out; }
+        .acc-item.open .acc-header i.toggle-icon { transform: rotate(180deg); }
+        .acc-inner { padding: 1.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
 
         /* --- VERTICAL TABS (NotebookLM Deep Dive) --- */
         .v-tabs-container { display: flex; height: 100%; border: 1px solid var(--border-color); border-radius: 16px; overflow: hidden; }
@@ -111,7 +191,7 @@
         .pipe-node { flex: 1; background: var(--bg-card-hover); border: 2px solid var(--border-color); border-radius: 16px; padding: 1.5rem; text-align: center; cursor: pointer; transition: all 0.3s; position: relative; }
         .pipe-node:hover { transform: translateY(-5px); box-shadow: var(--shadow-glow); border-color: var(--text-muted); }
         .pipe-node.active { border-color: var(--accent-blue); background: rgba(56,189,248,0.05); }
-        .pipe-node h4 { font-size: 1.1rem; font-weight: 800; margin-bottom: 0.5rem; }
+        .pipe-node h4 { font-size: 1.2rem; font-weight: 800; margin-bottom: 0.5rem; }
         .pipe-arrow { display: flex; align-items: center; justify-content: center; color: #475569; font-size: 2rem; padding-top: 3rem; }
         .pipe-detail-box { background: #020617; border: 1px solid var(--border-color); border-radius: 16px; padding: 2.5rem; display: none; animation: fadeIn 0.4s ease; border-left: 6px solid var(--accent-blue); }
         .pipe-detail-box.active { display: block; }
@@ -134,10 +214,15 @@
         .section-slide h1 { font-size: 72px; font-weight: 800; margin-bottom: 30px;}
         .section-slide hr { width: 100px; height: 4px; background: var(--accent-blue); border: none; margin-top: 50px; }
         
-        .live-lab-input { background: #020617; border: 2px dashed var(--accent-blue); border-radius: 12px; padding: 1.5rem; color: var(--text-main); font-size: 1.2rem; font-family: 'Courier New', Courier, monospace; width: 100%; resize: vertical; min-height: 180px; margin-bottom: 1rem; line-height: 1.6; font-weight: 600; }
+        /* Interactive Input */
+        .live-lab-input { background: #020617; border: 2px dashed var(--accent-blue); border-radius: 12px; padding: 1.5rem; color: var(--text-main); font-size: 1.2rem; font-family: 'Courier New', Courier, monospace; width: 100%; resize: vertical; min-height: 380px; margin-bottom: 1rem; line-height: 1.6; font-weight: 600; }
         .live-lab-input:focus { outline: none; border-style: solid; box-shadow: var(--shadow-glow); }
         .btn-action { background: var(--accent-blue); color: #fff; border: none; padding: 1rem 2rem; border-radius: 50px; font-size: 1.1rem; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 0.5rem; transition: all 0.2s; }
         .btn-action:hover { transform: translateY(-2px); box-shadow: var(--shadow-glow); }
+
+        /* Full Background Image for Closing Slide */
+        .full-bg-image { background-position: center; background-size: cover; padding: 0; border: none; }
+        .full-bg-image .content-overlay { width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 80px; text-align: center; border-radius: 20px; }
 
         /* Gradients for SVGs */
         .logo-chatgpt { fill: var(--brand-chatgpt); }
@@ -175,7 +260,54 @@
             </div>
         </section>
 
-        <!-- Slide 2: Section A Divider -->
+        <!-- Slide 2: Core Philosophy -->
+        <section class="slide">
+            <div class="content-area center-text">
+                <i class="fa-solid fa-handshake-angle" style="font-size: 6rem; color: var(--accent-pink); margin-bottom: 2rem;"></i>
+                <p style="font-size: 4rem; font-weight: 800; color: var(--text-main); line-height: 1.3;">AI doesn't close deals.<br><span class="gradient-text">Trust does.</span></p>
+                <div style="background: var(--bg-card-hover); padding: 3rem; border-radius: 16px; margin-top: 4rem; max-width: 900px; text-align: left; border-left: 6px solid var(--accent-blue); box-shadow: var(--shadow-sm);">
+                    <ul class="stage-list" style="font-size: 1.5rem;">
+                        <li><i class="fa-solid fa-bullseye"></i> <strong>The Goal:</strong> Not to replace your real estate expertise.</li>
+                        <li><i class="fa-solid fa-clock"></i> <strong>The Reality:</strong> Use AI to rapidly buy back your time.</li>
+                        <li><i class="fa-solid fa-rocket"></i> <strong>The Focus:</strong> Eliminate admin friction so you can focus entirely on building high-value client relationships.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 3: Expectation vs Reality -->
+        <section class="slide">
+            <div>
+                <h2 class="slide-title">The Output Gap</h2>
+                <span class="slide-subtitle">Why most agents sound like generic robots when they prompt.</span>
+            </div>
+            <div class="content-area grid-2">
+                <div class="card">
+                    <div class="card-top-bar" style="background: var(--accent-red);"></div>
+                    <i class="fa-solid fa-eye-slash main-icon" style="color: var(--accent-red);"></i>
+                    <h3>The Average User</h3>
+                    <ul class="stage-list">
+                        <li><i class="fa-solid fa-minus" style="color: var(--accent-red);"></i> Provides zero context or background.</li>
+                        <li><i class="fa-solid fa-minus" style="color: var(--accent-red);"></i> Asks vague, open-ended questions.</li>
+                        <li><i class="fa-solid fa-minus" style="color: var(--accent-red);"></i> Accepts the first generic draft.</li>
+                    </ul>
+                    <div class="prompt-block" style="border-color: var(--accent-red); color: #fca5a5;">"Write an attractive post for a new project near KLCC."</div>
+                </div>
+                <div class="card">
+                    <div class="card-top-bar" style="background: var(--accent-green);"></div>
+                    <i class="fa-solid fa-bullseye main-icon" style="color: var(--accent-green);"></i>
+                    <h3>The Professional</h3>
+                    <ul class="stage-list">
+                        <li><i class="fa-solid fa-plus" style="color: var(--accent-green);"></i> Defines the exact audience and pain points.</li>
+                        <li><i class="fa-solid fa-plus" style="color: var(--accent-green);"></i> Sets precise tone parameters.</li>
+                        <li><i class="fa-solid fa-plus" style="color: var(--accent-green);"></i> Demands a specific, structured output format.</li>
+                    </ul>
+                    <div class="prompt-block" style="border-color: var(--accent-green); color: #6ee7b7;">"Act as a consultant. Write a LinkedIn post targeting foreign investors focused on rental yield..."</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 4: Section A Divider -->
         <section class="slide section-slide">
             <div class="content-area center-text">
                 <h2>SECTION A</h2>
@@ -185,7 +317,7 @@
             </div>
         </section>
 
-        <!-- Slide 3: The Content Core (4W Framework) -->
+        <!-- Slide 5: The Content Core (4W Framework) -->
         <section class="slide">
             <div>
                 <h2 class="slide-title">The Content Core Framework</h2>
@@ -216,7 +348,63 @@
             </div>
         </section>
 
-        <!-- Slide 4: Interactive Live Lab (Drafting Prompt) -->
+        <!-- Slide 6: Interactive Prompt Formula (At a Glance) -->
+        <section class="slide">
+            <div>
+                <h2 class="slide-title">The 5-Step Prompt Formula</h2>
+                <span class="slide-subtitle">Hover or click a block to highlight its core function below.</span>
+            </div>
+            <div class="content-area formula-container">
+                <!-- Interactive Top Row -->
+                <div class="formula-blocks-row" id="formula-triggers">
+                    <div class="f-block" onmouseover="highlightFormula(0)">Context</div>
+                    <div class="f-plus">+</div>
+                    <div class="f-block" onmouseover="highlightFormula(1)">Task</div>
+                    <div class="f-plus">+</div>
+                    <div class="f-block" style="border-color: var(--accent-pink); color: var(--accent-pink);" onmouseover="highlightFormula(2)">WHO</div>
+                    <div class="f-plus">+</div>
+                    <div class="f-block" onmouseover="highlightFormula(3)">Tone</div>
+                    <div class="f-plus">+</div>
+                    <div class="f-block" onmouseover="highlightFormula(4)">Format</div>
+                </div>
+
+                <!-- At a Glance Dashboard -->
+                <div class="formula-dashboard" id="formula-details">
+                    <div class="f-detail-card">
+                        <i class="fa-solid fa-database"></i>
+                        <h4>Context</h4>
+                        <p class="core" style="background: #1e3a8a; color: #93c5fd;">The Raw Material</p>
+                        <p class="desc">Provide location, facts, constraints, or the client's current situation before asking anything.</p>
+                    </div>
+                    <div class="f-detail-card">
+                        <i class="fa-solid fa-list-check" style="color: #f8fafc;"></i>
+                        <h4>Task</h4>
+                        <p class="core" style="background: #334155; color: #fff;">The Action</p>
+                        <p class="desc">Be specific: "Summarize this PDF", "Draft a cold email", "Create a comparison table".</p>
+                    </div>
+                    <div class="f-detail-card">
+                        <i class="fa-solid fa-users" style="color: var(--accent-pink);"></i>
+                        <h4>WHO</h4>
+                        <p class="core" style="background: #831843; color: #f9a8d4;">The Pain Point</p>
+                        <p class="desc">Identify the target reader (e.g., Foreign Investor vs. First-time Buyer). <strong>It is NOT the AI's role.</strong></p>
+                    </div>
+                    <div class="f-detail-card">
+                        <i class="fa-solid fa-masks-theater" style="color: var(--accent-orange);"></i>
+                        <h4>Tone</h4>
+                        <p class="core" style="background: #78350f; color: #fcd34d;">The Anchor</p>
+                        <p class="desc">Set the vibe: Empathetic, highly analytical, professional, or urgent.</p>
+                    </div>
+                    <div class="f-detail-card">
+                        <i class="fa-solid fa-ruler-combined" style="color: var(--accent-green);"></i>
+                        <h4>Format</h4>
+                        <p class="core" style="background: #064e3b; color: #6ee7b7;">The Boundaries</p>
+                        <p class="desc">Set hard limits: Max 150 words, 3 bullet points, or CSV output so it doesn't overflow.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 7: Interactive Live Lab (Drafting Prompt) -->
         <section class="slide">
             <div>
                 <h2 class="slide-title">Live Lab: The 5-Step Formula</h2>
@@ -237,7 +425,7 @@ Format: Output as [ Format, e.g., a short intro, 3 bullet points, and a CTA unde
             </div>
         </section>
 
-        <!-- Slide 5: Behavior Preferences -->
+        <!-- Slide 8: Behavior Preferences -->
         <section class="slide">
             <div>
                 <h2 class="slide-title">Stop Repeating Yourself</h2>
@@ -268,7 +456,7 @@ Format: Output as [ Format, e.g., a short intro, 3 bullet points, and a CTA unde
             </div>
         </section>
 
-        <!-- Slide 6: Section B Divider -->
+        <!-- Slide 9: Section B Divider -->
         <section class="slide section-slide">
             <div class="content-area center-text">
                 <h2>SECTION B</h2>
@@ -278,7 +466,7 @@ Format: Output as [ Format, e.g., a short intro, 3 bullet points, and a CTA unde
             </div>
         </section>
 
-        <!-- Slide 7: The Tool Matrix (Authentic Logos) -->
+        <!-- Slide 10: The Tool Matrix (Authentic Logos) -->
         <section class="slide">
             <div>
                 <h2 class="slide-title">The Big 4 Landscape</h2>
@@ -328,14 +516,38 @@ Format: Output as [ Format, e.g., a short intro, 3 bullet points, and a CTA unde
                         </tr>
                     </tbody>
                 </table>
-                <div style="background: var(--bg-card-hover); border-left: 4px solid var(--accent-red); padding: 1.5rem; border-radius: 8px; margin-top: 1rem;">
-                    <h4 style="color: var(--accent-red); margin-bottom: 0.5rem;"><i class="fa-solid fa-triangle-exclamation"></i> The Golden Rule</h4>
-                    <p style="color: var(--text-muted); font-size: 1.1rem;">Never ask Perplexity to write a creative post. Never trust ChatGPT blindly with live data. Use the right tool.</p>
+                <div class="accordion">
+                    <div class="acc-item">
+                        <div class="acc-header" onclick="toggleAccordion(this)">
+                            <div><i class="fa-solid fa-triangle-exclamation icon-main" style="color: var(--accent-red);"></i> <strong>Warning: Know Their Weaknesses</strong></div>
+                            <i class="fa-solid fa-chevron-down toggle-icon"></i>
+                        </div>
+                        <div class="acc-content">
+                            <div class="acc-inner">
+                                <div>
+                                    <h4 style="margin-bottom: 0.5rem;"><i class="fa-solid fa-brain text-green"></i> ChatGPT's Weakness</h4>
+                                    <p style="color: var(--text-muted); font-size: 1rem;">Tends to write robotic, highly structured but generic copy. Needs heavy 'Tone' prompting.</p>
+                                </div>
+                                <div>
+                                    <h4 style="margin-bottom: 0.5rem;"><i class="fa-solid fa-pen-nib" style="color:#d97757;"></i> Claude's Weakness</h4>
+                                    <p style="color: var(--text-muted); font-size: 1rem;">Slightly weaker live web search capabilities compared to others. Relies more on what you upload to it.</p>
+                                </div>
+                                <div>
+                                    <h4 style="margin-bottom: 0.5rem;"><i class="fa-solid fa-sparkles text-purple"></i> Gemini's Weakness</h4>
+                                    <p style="color: var(--text-muted); font-size: 1rem;">Can sometimes refuse prompts or be overly cautious due to Google's strict safety guardrails.</p>
+                                </div>
+                                <div>
+                                    <h4 style="margin-bottom: 0.5rem;"><i class="fa-solid fa-magnifying-glass-location text-blue"></i> Perplexity's Weakness</h4>
+                                    <p style="color: var(--text-muted); font-size: 1rem;">It is a search engine, not a creative writer. Do not ask it to write emotional marketing posts.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Slide 8: The Outlier - NotebookLM Intro -->
+        <!-- Slide 11: The Outlier - NotebookLM Intro -->
         <section class="slide">
             <div class="content-area center-text">
                 <div class="brand-logo" style="width: 120px; height: 120px; margin-bottom: 2rem;">
@@ -348,7 +560,7 @@ Format: Output as [ Format, e.g., a short intro, 3 bullet points, and a CTA unde
             </div>
         </section>
 
-        <!-- Slide 9: NotebookLM Deep Dive (Interactive Vertical Tabs - 5 Features) -->
+        <!-- Slide 12: NotebookLM Deep Dive (Interactive Vertical Tabs - 5 Features) -->
         <section class="slide">
             <div>
                 <h2 class="slide-title">NotebookLM: Standalone Mastery</h2>
@@ -440,7 +652,7 @@ Format: Output as [ Format, e.g., a short intro, 3 bullet points, and a CTA unde
             </div>
         </section>
 
-        <!-- Slide 10: Section C Divider -->
+        <!-- Slide 13: Section C Divider -->
         <section class="slide section-slide">
             <div class="content-area center-text">
                 <h2>SECTION C</h2>
@@ -450,7 +662,7 @@ Format: Output as [ Format, e.g., a short intro, 3 bullet points, and a CTA unde
             </div>
         </section>
 
-        <!-- Slide 11: The Synergy Rationale (WHY) -->
+        <!-- Slide 14: The Synergy Rationale (WHY) -->
         <section class="slide">
             <div>
                 <h2 class="slide-title">The Synergy Rationale</h2>
@@ -492,7 +704,7 @@ Format: Output as [ Format, e.g., a short intro, 3 bullet points, and a CTA unde
             </div>
         </section>
 
-        <!-- Slide 12: Deep Dive into Gemini Canvas -->
+        <!-- Slide 15: Deep Dive into Gemini Canvas -->
         <section class="slide">
             <div>
                 <h2 class="slide-title">Unlocking <span style="color: var(--accent-purple);">Gemini Canvas</span></h2>
@@ -520,7 +732,7 @@ Format: Output as [ Format, e.g., a short intro, 3 bullet points, and a CTA unde
             </div>
         </section>
 
-        <!-- Slide 13: Interactive Pipeline (Pitch Deck via Ecosystem) -->
+        <!-- Slide 16: Interactive Pipeline (Pitch Deck via Ecosystem) -->
         <section class="slide">
             <div>
                 <h2 class="slide-title">The Ultimate Pipeline: Pitch Deck</h2>
@@ -578,14 +790,13 @@ Slide X: [Main Title]
             </div>
         </section>
 
-        <!-- Slide 14: Closing -->
-        <section class="slide">
-            <div class="content-area center-text" style="justify-content: center;">
-                <h1 style="font-size: clamp(3rem, 5vw, 4.5rem); line-height: 1.3; font-weight: 800; margin-bottom: 2rem;">"Not taken from one & another.<br><span class="gradient-text">But contribute to one & another.</span>"</h1>
-                <p style="font-size: 2rem; color: var(--text-muted); max-width: 1000px; margin: 0 auto 3rem auto;">The future belongs to the negotiator who builds intelligent systems, not the one who simply works longer hours.</p>
-                <div style="background: var(--bg-card); border: 2px solid var(--accent-blue); padding: 1.5rem 4rem; border-radius: 50px; display: inline-block; box-shadow: var(--shadow-glow); cursor: pointer; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                    <p style="font-size: 2.5rem; color: var(--accent-blue); font-weight: 800; margin: 0; letter-spacing: 2px;">Q&A SESSION</p>
-                </div>
+        <!-- Slide 17: Closing -->
+        <section class="slide full-bg-image" style="background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=2850&q=80');">
+            <div class="content-overlay" style="background: rgba(2, 6, 23, 0.88);">
+                <h1 style="font-size: clamp(3rem, 5vw, 4.5rem); line-height: 1.5; font-weight: 800; margin-bottom: 0; max-width: 1200px;">
+                    "Not taken from one & another.<br>
+                    <span class="gradient-text">But contribute to one & another.</span>"
+                </h1>
             </div>
         </section>
 
@@ -597,7 +808,7 @@ Slide X: [Main Title]
         <div id="progress-container">
             <div id="progress-bar"></div>
         </div>
-        <div id="page-indicator">1 / 14</div>
+        <div id="page-indicator">1 / 17</div>
         <button class="nav-btn" id="next-btn" onclick="changeSlide(1)">Next <i class="fa-solid fa-arrow-right"></i></button>
     </div>
 
@@ -626,8 +837,8 @@ Slide X: [Main Title]
             progressBar.style.width = `${progress}%`;
             pageIndicator.innerText = `${currentSlideIndex + 1} / ${slides.length}`;
             
-            // Trigger At-A-Glance highlight on slide 4 (index 3)
-            if(currentSlideIndex === 3) { highlightFormula(0); }
+            // Trigger At-A-Glance highlight on slide 6 (index 5)
+            if(currentSlideIndex === 5) { highlightFormula(0); }
         }
 
         function changeSlide(direction) {
@@ -669,6 +880,12 @@ Slide X: [Main Title]
                 feedback.style.display = 'inline-block';
                 setTimeout(() => { feedback.style.display = 'none'; }, 2000);
             });
+        }
+
+        // --- Accordion Logic ---
+        function toggleAccordion(headerElement) {
+            const item = headerElement.parentElement;
+            item.classList.toggle('open');
         }
 
         // --- Vertical Tabs Logic (NotebookLM Deep Dive) ---
