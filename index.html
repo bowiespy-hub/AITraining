@@ -3,32 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PropNex AI Masterclass - Vibrant Edition</title>
+    <title>PropNex AI Masterclass - Dark Vibrant Edition</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
-            /* Lively & Bright Color Palette */
-            --bg-main: #f8fafc; /* Very light slate/blue */
-            --bg-card: #ffffff;
-            --bg-card-hover: #f1f5f9;
-            --text-main: #0f172a; /* Dark slate */
-            --text-muted: #475569;
+            /* Dark Mode with Vibrant Accents (Projector Friendly) */
+            --bg-main: #020617; /* Deep Slate */
+            --bg-card: #0f172a;
+            --bg-card-hover: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
             
             /* Vibrant Accents */
-            --accent-blue: #2563eb; /* PropNex Royal Blue */
-            --accent-sky: #0ea5e9;
-            --accent-pink: #ec4899; /* Lively Pink */
-            --accent-green: #10b981; /* Success Green */
-            --accent-orange: #f59e0b; /* Warm Amber */
-            --accent-purple: #8b5cf6;
+            --accent-blue: #38bdf8; /* Bright Sky Blue */
+            --accent-pink: #ec4899; /* Vibrant Pink */
+            --accent-green: #10b981; /* Emerald Green */
+            --accent-orange: #f59e0b; /* Amber */
+            --accent-purple: #a855f7; /* Purple */
+            --accent-red: #ef4444;
             
-            --border-color: #e2e8f0;
-            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-            --shadow-lg: 0 20px 40px -10px rgba(0, 0, 0, 0.08);
-            --shadow-glow: 0 0 30px rgba(37, 99, 235, 0.15);
+            --border-color: rgba(255, 255, 255, 0.1);
+            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+            --shadow-lg: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+            --shadow-glow: 0 0 30px rgba(56, 189, 248, 0.2);
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -42,10 +42,11 @@
             width: 100vw;
             display: flex;
             flex-direction: column;
+            /* Vibrant but dark background glows */
             background-image: 
-                radial-gradient(at 0% 0%, rgba(236, 72, 153, 0.08) 0px, transparent 50%),
-                radial-gradient(at 100% 0%, rgba(14, 165, 233, 0.08) 0px, transparent 50%),
-                radial-gradient(at 100% 100%, rgba(16, 185, 129, 0.08) 0px, transparent 50%);
+                radial-gradient(circle at 15% 15%, rgba(236, 72, 153, 0.05) 0px, transparent 40%),
+                radial-gradient(circle at 85% 15%, rgba(56, 189, 248, 0.05) 0px, transparent 40%),
+                radial-gradient(circle at 50% 85%, rgba(16, 185, 129, 0.05) 0px, transparent 40%);
         }
 
         /* --- SLIDE CONTAINER --- */
@@ -62,7 +63,7 @@
 
         .slide {
             background-color: var(--bg-card);
-            border-radius: 24px; /* Softer, friendlier corners */
+            border-radius: 20px; 
             box-shadow: var(--shadow-lg);
             border: 1px solid var(--border-color);
             width: 100%;
@@ -73,21 +74,17 @@
             flex-direction: column;
             opacity: 0;
             transform: scale(0.98) translateY(10px);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Bouncy transition */
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
             overflow-y: auto;
         }
 
-        .slide.active {
-            display: flex;
-            opacity: 1;
-            transform: scale(1) translateY(0);
-        }
+        .slide.active { display: flex; opacity: 1; transform: scale(1) translateY(0); }
 
         /* Scrollbar */
         .slide::-webkit-scrollbar { width: 8px; }
         .slide::-webkit-scrollbar-track { background: transparent; }
-        .slide::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
-        .slide::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        .slide::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+        .slide::-webkit-scrollbar-thumb:hover { background: #475569; }
 
         /* --- TYPOGRAPHY --- */
         h1 { font-size: clamp(3rem, 5vw, 4.5rem); font-weight: 800; line-height: 1.1; letter-spacing: -1px; margin-bottom: 1rem; color: var(--text-main); }
@@ -96,42 +93,26 @@
         p { font-size: clamp(1.1rem, 1.5vw, 1.3rem); color: var(--text-muted); line-height: 1.6; }
 
         /* Text Gradients */
-        .gradient-text {
-            background: linear-gradient(135deg, var(--accent-blue), var(--accent-pink));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .gradient-green {
-            background: linear-gradient(135deg, var(--accent-green), var(--accent-sky));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+        .gradient-text { background: linear-gradient(135deg, var(--accent-blue), var(--accent-pink)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .gradient-green { background: linear-gradient(135deg, var(--accent-green), var(--accent-blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
         /* --- LAYOUT UTILITIES --- */
         .content-area { display: flex; flex-direction: column; flex-grow: 1; justify-content: center; height: 100%; }
         .center-text { text-align: center; align-items: center; }
-        
         .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 2rem; }
         .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .split-40-60 { display: grid; grid-template-columns: 4fr 6fr; gap: 50px; align-items: center; height: 100%; }
         
         /* --- CARDS & UI COMPONENTS --- */
         .card {
-            background-color: var(--bg-card);
-            border-radius: 16px;
-            padding: 2rem;
-            border: 1px solid var(--border-color);
-            box-shadow: var(--shadow-sm);
-            display: flex;
-            flex-direction: column;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
+            background-color: var(--bg-card-hover);
+            border-radius: 16px; padding: 2.5rem; border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm); display: flex; flex-direction: column;
+            transition: all 0.3s ease; position: relative; overflow: hidden;
         }
-        .card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); border-color: var(--accent-sky); }
-        .card i.main-icon { font-size: 3rem; margin-bottom: 1.5rem; color: var(--accent-blue); }
+        .card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); border-color: var(--accent-blue); }
+        .card i.main-icon { font-size: 3.5rem; margin-bottom: 1.5rem; color: var(--accent-blue); }
         .card h3 { font-size: 1.8rem; margin-bottom: 1rem; color: var(--text-main); font-weight: 700; }
-
-        /* Decorative top bar for cards */
         .card-top-bar { position: absolute; top: 0; left: 0; width: 100%; height: 6px; background: var(--accent-blue); }
 
         ul.stage-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem; }
@@ -139,96 +120,82 @@
         ul.stage-list li i { color: var(--accent-blue); font-size: 1.2rem; margin-top: 0.3rem; flex-shrink: 0; }
 
         .prompt-block {
-            background: #f8fafc;
-            border-left: 6px solid var(--accent-pink);
-            border-radius: 12px;
-            padding: 1.5rem 2rem;
-            font-family: 'Courier New', Courier, monospace;
-            color: #334155;
-            font-size: 1.15rem;
-            line-height: 1.6;
-            font-weight: 600;
-            white-space: pre-wrap;
-            width: 100%;
-            margin-top: 1rem;
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+            background: #020617; border-left: 6px solid var(--accent-pink); border-radius: 12px;
+            padding: 1.5rem 2rem; font-family: 'Courier New', Courier, monospace; color: var(--accent-green);
+            font-size: 1.15rem; line-height: 1.6; font-weight: 600; white-space: pre-wrap; width: 100%; margin-top: 1rem;
         }
 
         /* --- INTERACTIVE: AT A GLANCE FORMULA --- */
         .formula-container { display: flex; flex-direction: column; gap: 2rem; width: 100%; }
         .formula-blocks-row { display: flex; justify-content: center; align-items: center; gap: 1rem; flex-wrap: wrap; }
         .f-block {
-            background: var(--bg-card); border: 2px solid var(--border-color); border-radius: 12px;
+            background: var(--bg-card-hover); border: 2px solid var(--border-color); border-radius: 12px;
             padding: 1rem 1.5rem; font-size: 1.5rem; font-weight: 800; color: var(--text-muted);
             cursor: pointer; transition: all 0.2s; text-align: center; flex: 1; min-width: 120px;
-            box-shadow: var(--shadow-sm);
         }
-        .f-block:hover, .f-block.active { border-color: var(--accent-blue); color: var(--accent-blue); transform: scale(1.05); background: #eff6ff; }
-        .f-plus { font-size: 2rem; color: #cbd5e1; font-weight: 800; }
+        .f-block:hover, .f-block.active { border-color: var(--accent-blue); color: var(--accent-blue); transform: scale(1.05); background: rgba(56, 189, 248, 0.1); }
+        .f-plus { font-size: 2rem; color: #475569; font-weight: 800; }
         
-        /* The At-A-Glance Dashboard */
         .formula-dashboard { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; width: 100%; }
         .f-detail-card {
-            background: #f8fafc; border-radius: 12px; padding: 1.5rem; border: 1px solid var(--border-color);
+            background: var(--bg-card-hover); border-radius: 12px; padding: 1.5rem; border: 1px solid var(--border-color);
             transition: all 0.3s ease; display: flex; flex-direction: column; align-items: center; text-align: center;
         }
-        .f-detail-card.highlight { background: #fff; border-color: var(--accent-blue); box-shadow: var(--shadow-lg); transform: translateY(-10px); }
-        .f-detail-card i { font-size: 2rem; color: var(--accent-blue); margin-bottom: 1rem; }
-        .f-detail-card h4 { font-size: 1.3rem; margin-bottom: 0.5rem; color: var(--text-main); font-weight: 800; }
-        .f-detail-card p.core { font-size: 1rem; color: var(--text-muted); font-weight: 600; margin-bottom: 1rem; }
-        .f-detail-card p.desc { font-size: 0.95rem; color: var(--text-muted); line-height: 1.4; text-align: left; }
+        .f-detail-card.highlight { background: #020617; border-color: var(--accent-blue); box-shadow: var(--shadow-glow); transform: translateY(-10px); }
+        .f-detail-card i { font-size: 2.5rem; color: var(--accent-blue); margin-bottom: 1rem; }
+        .f-detail-card h4 { font-size: 1.4rem; margin-bottom: 0.5rem; color: var(--text-main); font-weight: 800; }
+        .f-detail-card p.core { font-size: 1rem; color: #fff; font-weight: 700; margin-bottom: 1rem; padding: 0.3rem 0.8rem; border-radius: 50px; }
+        .f-detail-card p.desc { font-size: 1rem; color: var(--text-muted); line-height: 1.4; text-align: left; }
 
         /* --- INTERACTIVE: COMPARISON TABLE & ACCORDIONS --- */
         .matrix-container { display: flex; flex-direction: column; gap: 2rem; height: 100%; }
-        table.styled-table { width: 100%; border-collapse: separate; border-spacing: 0; border-radius: 12px; overflow: hidden; border: 1px solid var(--border-color); box-shadow: var(--shadow-sm); }
-        table.styled-table th, table.styled-table td { padding: 1rem 1.5rem; text-align: left; background: #fff; border-bottom: 1px solid var(--border-color); font-size: 1.1rem; }
-        table.styled-table th { background: #f8fafc; color: var(--text-main); font-weight: 800; text-transform: uppercase; letter-spacing: 1px; font-size: 1rem;}
+        table.styled-table { width: 100%; border-collapse: separate; border-spacing: 0; border-radius: 12px; overflow: hidden; border: 1px solid var(--border-color); }
+        table.styled-table th, table.styled-table td { padding: 1.2rem 1.5rem; text-align: left; background: var(--bg-card-hover); border-bottom: 1px solid var(--border-color); font-size: 1.1rem; }
+        table.styled-table th { background: #020617; color: var(--accent-blue); font-weight: 800; text-transform: uppercase; letter-spacing: 1px; font-size: 1rem;}
         table.styled-table tr:last-child td { border-bottom: none; }
         
         .accordion { display: flex; flex-direction: column; gap: 1rem; }
-        .acc-item { background: #fff; border: 1px solid var(--border-color); border-radius: 12px; overflow: hidden; transition: all 0.3s; }
-        .acc-header { padding: 1rem 1.5rem; background: #f8fafc; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-weight: 700; font-size: 1.3rem; color: var(--text-main); }
-        .acc-header:hover { background: #f1f5f9; }
+        .acc-item { background: var(--bg-card-hover); border: 1px solid var(--border-color); border-radius: 12px; overflow: hidden; transition: all 0.3s; }
+        .acc-header { padding: 1.2rem 1.5rem; background: #020617; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-weight: 700; font-size: 1.3rem; color: var(--text-main); }
+        .acc-header:hover { background: #0f172a; }
         .acc-header i.icon-main { margin-right: 1rem; font-size: 1.5rem; width: 30px; text-align: center;}
         .acc-header i.toggle-icon { transition: transform 0.3s; }
-        .acc-content { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0, 1, 0, 1); background: #fff; }
+        .acc-content { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0, 1, 0, 1); background: var(--bg-card-hover); }
         .acc-item.open .acc-content { max-height: 1000px; transition: max-height 0.4s ease-in-out; }
         .acc-item.open .acc-header i.toggle-icon { transform: rotate(180deg); }
         .acc-inner { padding: 1.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
 
         /* --- INTERACTIVE: PIPELINE FLOWCHART --- */
         .pipeline-flow { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; margin-bottom: 2rem; }
-        .pipe-node { flex: 1; background: #fff; border: 2px solid var(--border-color); border-radius: 16px; padding: 1.5rem; text-align: center; cursor: pointer; transition: all 0.3s; position: relative; box-shadow: var(--shadow-sm); }
-        .pipe-node:hover { border-color: var(--accent-blue); transform: translateY(-5px); box-shadow: var(--shadow-lg); }
-        .pipe-node.active { border-color: var(--accent-blue); background: #eff6ff; }
+        .pipe-node { flex: 1; background: var(--bg-card-hover); border: 2px solid var(--border-color); border-radius: 16px; padding: 1.5rem; text-align: center; cursor: pointer; transition: all 0.3s; position: relative; }
+        .pipe-node:hover { border-color: var(--accent-blue); transform: translateY(-5px); box-shadow: var(--shadow-glow); }
+        .pipe-node.active { border-color: var(--accent-blue); background: rgba(56,189,248,0.1); }
         .pipe-icon { font-size: 2.5rem; color: var(--accent-blue); margin-bottom: 1rem; }
         .pipe-node h4 { font-size: 1.2rem; font-weight: 800; margin-bottom: 0.5rem; }
         
-        .pipe-arrow { display: flex; align-items: center; justify-content: center; color: #cbd5e1; font-size: 2rem; padding-top: 3rem; }
+        .pipe-arrow { display: flex; align-items: center; justify-content: center; color: #475569; font-size: 2rem; padding-top: 3rem; }
         
-        .pipe-detail-box { background: #f8fafc; border: 1px solid var(--border-color); border-radius: 16px; padding: 2rem; display: none; animation: fadeIn 0.4s ease; border-left: 6px solid var(--accent-blue); }
+        .pipe-detail-box { background: #020617; border: 1px solid var(--border-color); border-radius: 16px; padding: 2.5rem; display: none; animation: fadeIn 0.4s ease; border-left: 6px solid var(--accent-blue); }
         .pipe-detail-box.active { display: block; }
         .pipe-detail-box h3 { font-size: 1.8rem; margin-bottom: 1rem; color: var(--text-main); }
 
         /* --- INTERACTIVE LIVE LAB (Inputs) --- */
         .live-lab-input {
-            background: #fff; border: 2px dashed var(--accent-blue); border-radius: 12px;
-            padding: 1.5rem; color: var(--text-main); font-size: 1.3rem; font-family: 'Courier New', Courier, monospace;
+            background: #020617; border: 2px dashed var(--accent-blue); border-radius: 12px;
+            padding: 1.5rem; color: var(--accent-green); font-size: 1.2rem; font-family: 'Courier New', Courier, monospace;
             width: 100%; resize: vertical; min-height: 200px; margin-bottom: 1rem; line-height: 1.6; font-weight: 600;
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
         }
         .live-lab-input:focus { outline: none; border-style: solid; box-shadow: var(--shadow-glow); }
         .btn-action {
             background: var(--accent-blue); color: #fff; border: none; padding: 1rem 2rem;
             border-radius: 50px; font-size: 1.2rem; font-weight: 700; cursor: pointer; display: inline-flex;
-            align-items: center; gap: 0.5rem; transition: all 0.2s; box-shadow: var(--shadow-sm);
+            align-items: center; gap: 0.5rem; transition: all 0.2s;
         }
-        .btn-action:hover { background: #1d4ed8; transform: translateY(-2px); box-shadow: var(--shadow-lg); }
-        .btn-action:active { transform: scale(0.98); }
+        .btn-action:hover { background: #2563eb; transform: translateY(-2px); box-shadow: var(--shadow-glow); }
 
         /* --- BOTTOM CONTROL BAR --- */
         #controls {
-            height: 80px; width: 100%; background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px);
+            height: 80px; width: 100%; background: rgba(2, 6, 23, 0.9); backdrop-filter: blur(10px);
             border-top: 1px solid var(--border-color); display: flex; justify-content: space-between;
             align-items: center; padding: 0 3rem; z-index: 10;
         }
@@ -236,20 +203,31 @@
             background: transparent; border: none; color: var(--text-main); font-size: 1.5rem; font-weight: 700; cursor: pointer;
             padding: 0.5rem 1rem; border-radius: 8px; transition: background 0.2s; display: flex; align-items: center; gap: 1rem;
         }
-        .nav-btn:hover { background: #f1f5f9; }
+        .nav-btn:hover { background: rgba(255,255,255,0.1); }
         .nav-btn:disabled { color: var(--text-muted); cursor: not-allowed; opacity: 0.5; }
         
-        #progress-container { flex-grow: 1; margin: 0 3rem; height: 8px; background: #e2e8f0; border-radius: 4px; overflow: hidden; }
+        #progress-container { flex-grow: 1; margin: 0 3rem; height: 6px; background: #1e293b; border-radius: 3px; overflow: hidden; }
         #progress-bar { height: 100%; background: linear-gradient(90deg, var(--accent-blue), var(--accent-pink)); width: 0%; transition: width 0.4s ease-out; }
         #page-indicator { color: var(--text-muted); font-size: 1.2rem; font-weight: 700; font-variant-numeric: tabular-nums; }
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* Tags */
-        .tag { display: inline-block; padding: 0.3rem 0.8rem; border-radius: 50px; font-size: 0.9rem; font-weight: 700; text-transform: uppercase; }
-        .tag-blue { background: #dbeafe; color: #1e40af; }
-        .tag-green { background: #d1fae5; color: #065f46; }
-        .tag-pink { background: #fce7f3; color: #9d174d; }
+        /* Custom Tags */
+        .tag-blue { background: #1e3a8a; color: #93c5fd; }
+        .tag-green { background: #064e3b; color: #6ee7b7; }
+        .tag-pink { background: #831843; color: #f9a8d4; }
+        .tag-orange { background: #78350f; color: #fcd34d; }
+
+        /* Section Dividers */
+        .section-slide { justify-content: center; align-items: center; text-align: center; }
+        .section-slide h2 { font-size: 32px; color: var(--accent-blue); letter-spacing: 6px; margin-bottom: 25px; text-transform: uppercase; font-weight: 800;}
+        .section-slide h1 { font-size: 72px; font-weight: 800; margin-bottom: 30px;}
+        .section-slide p { font-size: 28px; color: var(--text-muted); max-width: 900px; line-height: 1.5;}
+        .section-slide hr { width: 100px; height: 4px; background: var(--accent-blue); border: none; margin-top: 50px; }
+        
+        /* Full Background Image */
+        .full-bg-image { background-position: center; background-size: cover; padding: 0;}
+        .full-bg-image .content-overlay { width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; background: rgba(2, 6, 23, 0.85); padding: 80px; text-align: center; }
     </style>
 </head>
 <body>
@@ -257,15 +235,15 @@
     <div id="app-container">
         
         <!-- Slide 1: Title -->
-        <section class="slide active">
-            <div class="content-area center-text">
-                <div style="background: #eff6ff; padding: 0.5rem 1.5rem; border-radius: 50px; display: inline-block; margin-bottom: 2rem;">
-                    <h4 style="color: var(--accent-blue); letter-spacing: 4px; font-size: 1.2rem; text-transform: uppercase; font-weight: 800;">PropNex Masterclass</h4>
+        <section class="slide active full-bg-image" style="background-image: url('http://googleusercontent.com/image_collection/image_retrieval/17775183259710016881');">
+            <div class="content-overlay">
+                <div style="background: rgba(56, 189, 248, 0.1); border: 1px solid var(--accent-blue); padding: 0.5rem 2rem; border-radius: 50px; display: inline-block; margin-bottom: 2rem;">
+                    <h4 style="color: var(--accent-blue); letter-spacing: 6px; font-size: 1.2rem; text-transform: uppercase; font-weight: 800;">PropNex Masterclass</h4>
                 </div>
-                <h1 style="font-size: clamp(4rem, 6vw, 6rem);">AI Digital Assistant</h1>
-                <p style="font-size: 2rem; color: var(--text-muted); font-weight: 600; margin-top: 1rem;">Turning Professional Logic into Command Systems</p>
-                <div style="margin-top: 4rem; display: flex; gap: 2rem; justify-content: center; font-size: 2.5rem; color: #cbd5e1;">
-                    <i class="fa-solid fa-robot" style="color: var(--accent-blue);"></i>
+                <h1 style="font-size: clamp(4rem, 6vw, 6.5rem);">AI Digital Assistant</h1>
+                <p style="font-size: 2rem; color: #cbd5e1; font-weight: 500; margin-top: 1rem;">Turning Professional Logic into Command Systems</p>
+                <div style="margin-top: 4rem; display: flex; gap: 3rem; justify-content: center; font-size: 3rem; color: var(--accent-blue);">
+                    <i class="fa-solid fa-robot"></i>
                     <i class="fa-solid fa-bolt" style="color: var(--accent-orange);"></i>
                     <i class="fa-solid fa-chart-line" style="color: var(--accent-green);"></i>
                 </div>
@@ -275,13 +253,13 @@
         <!-- Slide 2: Core Philosophy -->
         <section class="slide">
             <div class="content-area center-text">
-                <i class="fa-solid fa-handshake-angle" style="font-size: 5rem; color: var(--accent-pink); margin-bottom: 2rem;"></i>
-                <p style="font-size: 3.5rem; font-weight: 800; color: var(--text-main); line-height: 1.3;">AI doesn't close deals.<br><span class="gradient-text">Trust does.</span></p>
-                <div style="background: #fff; padding: 3rem; border-radius: 16px; margin-top: 3rem; max-width: 900px; text-align: left; border-left: 6px solid var(--accent-blue); box-shadow: var(--shadow-sm);">
-                    <ul class="stage-list" style="font-size: 1.4rem;">
-                        <li><i class="fa-solid fa-bullseye"></i> <strong>The Goal:</strong> Not to let AI replace your real estate expertise.</li>
-                        <li><i class="fa-solid fa-clock"></i> <strong>The Reality:</strong> Use AI to buy back your time.</li>
-                        <li><i class="fa-solid fa-rocket"></i> <strong>The Focus:</strong> Eliminate administrative friction so you can focus entirely on building client relationships.</li>
+                <i class="fa-solid fa-handshake-angle" style="font-size: 6rem; color: var(--accent-pink); margin-bottom: 2rem;"></i>
+                <p style="font-size: 4rem; font-weight: 800; color: var(--text-main); line-height: 1.3;">AI doesn't close deals.<br><span class="gradient-text">Trust does.</span></p>
+                <div style="background: var(--bg-card-hover); padding: 3rem; border-radius: 16px; margin-top: 4rem; max-width: 900px; text-align: left; border-left: 6px solid var(--accent-blue); box-shadow: var(--shadow-sm);">
+                    <ul class="stage-list" style="font-size: 1.5rem;">
+                        <li><i class="fa-solid fa-bullseye"></i> <strong>The Goal:</strong> Not to replace your real estate expertise.</li>
+                        <li><i class="fa-solid fa-clock"></i> <strong>The Reality:</strong> Use AI to rapidly buy back your time.</li>
+                        <li><i class="fa-solid fa-rocket"></i> <strong>The Focus:</strong> Eliminate admin friction so you can focus entirely on building high-value client relationships.</li>
                     </ul>
                 </div>
             </div>
@@ -291,7 +269,7 @@
         <section class="slide">
             <div>
                 <h2 class="slide-title">The Output Gap</h2>
-                <span class="slide-subtitle">Why most agents sound like generic robots.</span>
+                <span class="slide-subtitle">Why most agents sound like generic robots when they prompt.</span>
             </div>
             <div class="content-area grid-2">
                 <div class="card">
@@ -303,7 +281,7 @@
                         <li><i class="fa-solid fa-minus" style="color: var(--accent-red);"></i> Asks vague, open-ended questions.</li>
                         <li><i class="fa-solid fa-minus" style="color: var(--accent-red);"></i> Accepts the first generic draft.</li>
                     </ul>
-                    <div class="prompt-block" style="border-color: var(--accent-red); background: #fef2f2;">"Write an attractive post for a new project near KLCC."</div>
+                    <div class="prompt-block" style="border-color: var(--accent-red); color: #fca5a5;">"Write an attractive post for a new project near KLCC."</div>
                 </div>
                 <div class="card">
                     <div class="card-top-bar" style="background: var(--accent-green);"></div>
@@ -314,7 +292,7 @@
                         <li><i class="fa-solid fa-plus" style="color: var(--accent-green);"></i> Sets precise tone parameters.</li>
                         <li><i class="fa-solid fa-plus" style="color: var(--accent-green);"></i> Demands a specific, structured output format.</li>
                     </ul>
-                    <div class="prompt-block" style="border-color: var(--accent-green); background: #f0fdf4;">"Act as a consultant. Write a LinkedIn post targeting foreign investors focused on rental yield..."</div>
+                    <div class="prompt-block" style="border-color: var(--accent-green); color: #6ee7b7;">"Act as a consultant. Write a LinkedIn post targeting foreign investors focused on rental yield..."</div>
                 </div>
             </div>
         </section>
@@ -344,73 +322,42 @@
                     <div class="f-detail-card">
                         <i class="fa-solid fa-database"></i>
                         <h4>Context</h4>
-                        <p class="core tag tag-blue">The Raw Material</p>
+                        <p class="core tag-blue">The Raw Material</p>
                         <p class="desc">Provide location, facts, constraints, or the client's current situation before asking anything.</p>
                     </div>
                     <div class="f-detail-card">
-                        <i class="fa-solid fa-list-check" style="color: var(--text-main);"></i>
+                        <i class="fa-solid fa-list-check" style="color: #f8fafc;"></i>
                         <h4>Task</h4>
-                        <p class="core tag" style="background: #e2e8f0;">The Action</p>
+                        <p class="core" style="background: #334155; color: #fff;">The Action</p>
                         <p class="desc">Be specific: "Summarize this PDF", "Draft a cold email", "Create a comparison table".</p>
                     </div>
                     <div class="f-detail-card">
                         <i class="fa-solid fa-users" style="color: var(--accent-pink);"></i>
                         <h4>WHO</h4>
-                        <p class="core tag tag-pink">The Pain Point</p>
+                        <p class="core tag-pink">The Pain Point</p>
                         <p class="desc">Identify the target reader (e.g., Foreign Investor vs. First-time Buyer). <strong>It is NOT the AI's role.</strong></p>
                     </div>
                     <div class="f-detail-card">
                         <i class="fa-solid fa-masks-theater" style="color: var(--accent-orange);"></i>
                         <h4>Tone</h4>
-                        <p class="core tag" style="background: #fef3c7; color: #b45309;">The Anchor</p>
+                        <p class="core tag-orange">The Anchor</p>
                         <p class="desc">Set the vibe: Empathetic, highly analytical, professional, or urgent.</p>
                     </div>
                     <div class="f-detail-card">
                         <i class="fa-solid fa-ruler-combined" style="color: var(--accent-green);"></i>
                         <h4>Format</h4>
-                        <p class="core tag tag-green">The Boundaries</p>
-                        <p class="desc">Set hard limits: Max 150 words, 3 bullet points, or CSV output so it doesn't overflow your slides.</p>
+                        <p class="core tag-green">The Boundaries</p>
+                        <p class="desc">Set hard limits: Max 150 words, 3 bullet points, or CSV output so it doesn't overflow.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Slide 5: Behavior Preferences -->
-        <section class="slide">
-            <div>
-                <h2 class="slide-title">Stop Repeating Yourself</h2>
-                <span class="slide-subtitle">Use 'Custom Instructions' in ChatGPT/Claude to permanently load your Professional DNA.</span>
-            </div>
-            <div class="content-area grid-3">
-                <div class="card">
-                    <div class="card-top-bar" style="background: var(--accent-blue);"></div>
-                    <i class="fa-solid fa-user-tie main-icon"></i>
-                    <h3>1. The Persona</h3>
-                    <p style="font-size: 1.1rem; margin-bottom: 1rem;">Define your exact role and expertise level.</p>
-                    <div class="prompt-block" style="border-left-color: var(--accent-blue); padding: 1rem; font-size: 1rem;">"I am a PropNex consultant specializing in High-Net-Worth Individuals (HNWI) and foreign investments in Kuala Lumpur."</div>
-                </div>
-                <div class="card">
-                    <div class="card-top-bar" style="background: var(--accent-red);"></div>
-                    <i class="fa-solid fa-ban main-icon" style="color: var(--accent-red);"></i>
-                    <h3>2. Guardrails</h3>
-                    <p style="font-size: 1.1rem; margin-bottom: 1rem;">List your banned words to kill the "AI Vibe".</p>
-                    <div class="prompt-block" style="border-left-color: var(--accent-red); padding: 1rem; font-size: 1rem;">"BANNED WORDS: Luxurious, Unbelievable, Don't miss out, Fantastic, Breathtaking. Do not use generic marketing fluff."</div>
-                </div>
-                <div class="card">
-                    <div class="card-top-bar" style="background: var(--accent-green);"></div>
-                    <i class="fa-solid fa-chart-line main-icon" style="color: var(--accent-green);"></i>
-                    <h3>3. Output Rules</h3>
-                    <p style="font-size: 1.1rem; margin-bottom: 1rem;">Set default priorities for content generation.</p>
-                    <div class="prompt-block" style="border-left-color: var(--accent-green); padding: 1rem; font-size: 1rem;">"Always prioritize hard data. When describing a property, immediately highlight ROI, PSF comparisons, and Rental Yield."</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Slide 6: Interactive Live Lab (Drafting Prompt) -->
+        <!-- Slide 5: Interactive Live Lab (Drafting Prompt) -->
         <section class="slide">
             <div>
                 <h2 class="slide-title">Live Lab: The Daily Post</h2>
-                <span class="slide-subtitle">Draft your perfect prompt right here. Replace the brackets with a real listing.</span>
+                <span class="slide-subtitle">Let's execute the formula. Replace the brackets with a real listing.</span>
             </div>
             <div class="content-area">
                 <textarea class="live-lab-input" id="live-prompt">Context: I am representing a property located at [ Location, e.g., Mont Kiara ].
@@ -419,7 +366,7 @@ Its strongest selling point is [ Core Feature / ROI Data, e.g., 6% guaranteed re
 Task: Write a social media post.
 Audience (WHO): This is specifically targeting [ Specific Buyer Persona, e.g., Expatriate families ].
 Tone: Keep the tone [ Adjective, e.g., sharp, analytical, and professional ].
-Format: Output as [ Format, e.g., 3 bullet points under 150 words ].</textarea>
+Format: Output as [ Format, e.g., a short intro, 3 bullet points, and a call-to-action under 150 words ].</textarea>
                 <div style="display: flex; gap: 1rem; justify-content: flex-end; align-items: center; margin-top: 1rem;">
                     <span id="copy-feedback" style="color: var(--accent-green); display: none; font-weight: bold; font-size: 1.2rem;"><i class="fa-solid fa-check-circle"></i> Prompt Copied!</span>
                     <button class="btn-action" onclick="copyPrompt()"><i class="fa-solid fa-copy"></i> Copy to Clipboard</button>
@@ -427,11 +374,52 @@ Format: Output as [ Format, e.g., 3 bullet points under 150 words ].</textarea>
             </div>
         </section>
 
-        <!-- Slide 7: The Tool Matrix (Table + Accordions) -->
+        <!-- Slide 6: Behavior Preferences -->
+        <section class="slide">
+            <div>
+                <h2 class="slide-title">Stop Repeating Yourself</h2>
+                <span class="slide-subtitle">Now that you know the formula, use 'Custom Instructions' to permanently load your DNA into the AI.</span>
+            </div>
+            <div class="content-area grid-3">
+                <div class="card">
+                    <div class="card-top-bar" style="background: var(--accent-blue);"></div>
+                    <i class="fa-solid fa-user-tie main-icon"></i>
+                    <h3>1. The Persona</h3>
+                    <p style="font-size: 1.1rem; margin-bottom: 1rem;">Tell it who you are and your expertise level.</p>
+                    <div class="prompt-block" style="border-left-color: var(--accent-blue); padding: 1rem; font-size: 1rem;">"I am a PropNex consultant specializing in High-Net-Worth Individuals (HNWI) and foreign investments in Kuala Lumpur."</div>
+                </div>
+                <div class="card">
+                    <div class="card-top-bar" style="background: var(--accent-red);"></div>
+                    <i class="fa-solid fa-ban main-icon" style="color: var(--accent-red);"></i>
+                    <h3>2. Guardrails</h3>
+                    <p style="font-size: 1.1rem; margin-bottom: 1rem;">List your banned words to kill the "AI Vibe".</p>
+                    <div class="prompt-block" style="border-left-color: var(--accent-red); padding: 1rem; font-size: 1rem;">"BANNED WORDS: Luxurious, Unbelievable, Don't miss out, Fantastic. Do not use generic marketing fluff."</div>
+                </div>
+                <div class="card">
+                    <div class="card-top-bar" style="background: var(--accent-green);"></div>
+                    <i class="fa-solid fa-list-check main-icon" style="color: var(--accent-green);"></i>
+                    <h3>3. Output Rules</h3>
+                    <p style="font-size: 1.1rem; margin-bottom: 1rem;">Set default priorities & formatting habits.</p>
+                    <div class="prompt-block" style="border-left-color: var(--accent-green); padding: 1rem; font-size: 1rem;">"Always prioritize hard data. Highlight ROI, PSF, and Rental Yield upfront. Never write long essays; use bullet points."</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 7: Section B Divider -->
+        <section class="slide section-slide">
+            <div class="content-area center-text">
+                <h2>SECTION B</h2>
+                <h1>The Tool Matrix</h1>
+                <p>Stop using a screwdriver to hammer a nail. Compare, select, and conquer the right engine for the right job.</p>
+                <hr>
+            </div>
+        </section>
+
+        <!-- Slide 8: The Tool Matrix (Table + Accordions) -->
         <section class="slide">
             <div>
                 <h2 class="slide-title">The Tool Matrix</h2>
-                <span class="slide-subtitle">Stop using one tool for everything. Compare, select, and conquer.</span>
+                <span class="slide-subtitle">Understanding the primary conversational engines.</span>
             </div>
             <div class="content-area matrix-container">
                 <!-- At A Glance Table -->
@@ -439,29 +427,29 @@ Format: Output as [ Format, e.g., 3 bullet points under 150 words ].</textarea>
                     <thead>
                         <tr>
                             <th style="width: 20%;">AI Engine</th>
-                            <th style="width: 30%;">Core Strength</th>
-                            <th style="width: 50%;">PropNex Best Use Case</th>
+                            <th style="width: 25%;">Core Strength</th>
+                            <th style="width: 55%;">PropNex Best Use Case</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td><strong><i class="fa-solid fa-brain" style="color: var(--accent-green);"></i> ChatGPT</strong></td>
-                            <td><span class="tag tag-green">Logic & Ideation</span></td>
+                            <td><span class="tag-green" style="padding: 0.3rem 0.8rem; border-radius: 50px; font-weight: bold; font-size: 0.9rem;">Logic & Ideation</span></td>
                             <td>Building content calendars, generating Excel formulas, drafting varied cold call scripts.</td>
                         </tr>
                         <tr>
                             <td><strong><i class="fa-solid fa-pen-nib" style="color: #d97757;"></i> Claude 3.5</strong></td>
-                            <td><span class="tag" style="background: #ffedd5; color: #c2410c;">Nuance & Copywriting</span></td>
+                            <td><span class="tag-orange" style="padding: 0.3rem 0.8rem; border-radius: 50px; font-weight: bold; font-size: 0.9rem;">Nuance & Copy</span></td>
                             <td>Drafting premium listing copy, official PR letters, rewriting emails to match your tone.</td>
                         </tr>
                         <tr>
                             <td><strong><i class="fa-solid fa-sparkles" style="color: var(--accent-purple);"></i> Gemini</strong></td>
-                            <td><span class="tag" style="background: #f3e8ff; color: #7e22ce;">Ecosystem Integration</span></td>
+                            <td><span class="tag-pink" style="padding: 0.3rem 0.8rem; border-radius: 50px; font-weight: bold; font-size: 0.9rem; background:#4c1d95; color:#ddd6fe;">Ecosystem</span></td>
                             <td>Reading from Google Drive, one-click export to Google Slides/Docs, summarizing Gmails.</td>
                         </tr>
                         <tr>
                             <td><strong><i class="fa-solid fa-magnifying-glass-location" style="color: var(--accent-blue);"></i> Perplexity</strong></td>
-                            <td><span class="tag tag-blue">Live Research & Citations</span></td>
+                            <td><span class="tag-blue" style="padding: 0.3rem 0.8rem; border-radius: 50px; font-weight: bold; font-size: 0.9rem;">Live Research</span></td>
                             <td>Tracking exact MRT completion dates, checking competitor live pricing, finding verified news.</td>
                         </tr>
                     </tbody>
@@ -478,7 +466,7 @@ Format: Output as [ Format, e.g., 3 bullet points under 150 words ].</textarea>
                             <div class="acc-inner">
                                 <div>
                                     <h4 style="margin-bottom: 0.5rem;"><i class="fa-solid fa-brain text-green"></i> ChatGPT's Weakness</h4>
-                                    <p style="color: var(--text-muted); font-size: 1rem;">Tends to write robotic, highly structured but generic copy. Needs heavy 'Tone' prompting to sound human.</p>
+                                    <p style="color: var(--text-muted); font-size: 1rem;">Tends to write robotic, highly structured but generic copy. Needs heavy 'Tone' prompting.</p>
                                 </div>
                                 <div>
                                     <h4 style="margin-bottom: 0.5rem;"><i class="fa-solid fa-pen-nib" style="color:#d97757;"></i> Claude's Weakness</h4>
@@ -490,7 +478,7 @@ Format: Output as [ Format, e.g., 3 bullet points under 150 words ].</textarea>
                                 </div>
                                 <div>
                                     <h4 style="margin-bottom: 0.5rem;"><i class="fa-solid fa-magnifying-glass-location text-blue"></i> Perplexity's Weakness</h4>
-                                    <p style="color: var(--text-muted); font-size: 1rem;">It is a search engine, not a creative writer. Do not ask it to write emotional or creative marketing posts.</p>
+                                    <p style="color: var(--text-muted); font-size: 1rem;">It is a search engine, not a creative writer. Do not ask it to write emotional marketing posts.</p>
                                 </div>
                             </div>
                         </div>
@@ -499,104 +487,96 @@ Format: Output as [ Format, e.g., 3 bullet points under 150 words ].</textarea>
             </div>
         </section>
 
-        <!-- Slide 8: The Outlier - NotebookLM -->
+        <!-- Slide 9: The Outlier - NotebookLM Intro -->
+        <section class="slide">
+            <div class="content-area center-text">
+                <i class="fa-solid fa-book-open-reader" style="font-size: 8rem; color: var(--accent-orange); margin-bottom: 3rem;"></i>
+                <h1 style="font-size: 6rem; font-weight: 800; margin-bottom: 2rem;">The Outlier: <span style="color: var(--accent-orange);">NotebookLM</span></h1>
+                <p style="font-size: 2.5rem; color: var(--text-muted); max-width: 900px; line-height: 1.5;">
+                    It doesn't guess. It doesn't search the web. <br>It is a <strong>Closed-Loop AI</strong> that ONLY reads the documents you upload. Zero hallucination.
+                </p>
+            </div>
+        </section>
+
+        <!-- Slide 10: NotebookLM Standalone Mastery -->
         <section class="slide">
             <div>
-                <h2 class="slide-title">The Outlier: <span class="gradient-text">NotebookLM</span></h2>
-                <span class="slide-subtitle">It doesn't guess. It doesn't search the web. It is a Closed-Loop AI that ONLY reads what you upload.</span>
+                <h2 class="slide-title">NotebookLM Standalone Mastery</h2>
+                <span class="slide-subtitle">How to extract massive value using ONLY NotebookLM.</span>
             </div>
             <div class="content-area grid-3">
+                <!-- Use Case 1: Presentation -->
                 <div class="card">
-                    <div class="card-top-bar" style="background: var(--accent-orange);"></div>
-                    <i class="fa-solid fa-comment-dots main-icon" style="color: var(--accent-orange);"></i>
-                    <h3>The Instant Q&A Bot</h3>
-                    <p style="font-size: 1rem; margin-bottom: 1rem;">Upload 5 thick Developer PDFs and 3 complex Pricing Spreadsheets.</p>
-                    <p style="font-size: 1rem; color: var(--text-main); font-weight: 600;">Stop reading manually. Just ask:</p>
-                    <div class="prompt-block" style="border-left-color: var(--accent-orange); padding: 1rem; font-size: 0.95rem;">"What is the exact maintenance fee per sqft for Type B? Compare it across the 3 projects."</div>
+                    <div class="card-top-bar" style="background: var(--accent-blue);"></div>
+                    <i class="fa-solid fa-layer-group main-icon"></i>
+                    <h3>1. The Presentation Builder</h3>
+                    <p style="font-size: 1.1rem; margin-bottom: 1rem;">Upload a 100-page Developer PDF. Instead of reading it, ask it to build your pitch.</p>
+                    <div class="prompt-block" style="border-left-color: var(--accent-blue); padding: 1rem; font-size: 1rem;">"Create a 5-slide pitch deck structure from this document targeting Foreign Investors. Provide slide titles and 3 bullet points of hard data per slide."</div>
                 </div>
+                <!-- Use Case 2: Infographic -->
+                <div class="card">
+                    <div class="card-top-bar" style="background: var(--accent-green);"></div>
+                    <i class="fa-solid fa-table-columns main-icon" style="color: var(--accent-green);"></i>
+                    <h3>2. The Infographic Miner</h3>
+                    <p style="font-size: 1.1rem; margin-bottom: 1rem;">Upload 3 competing project brochures and pricing sheets. Get the data ready for your designer.</p>
+                    <div class="prompt-block" style="border-left-color: var(--accent-green); padding: 1rem; font-size: 1rem;">"Extract a timeline of MRT completion dates and projected price appreciation across these 3 projects. Format as a 2-column comparative table."</div>
+                </div>
+                <!-- Use Case 3: Audio Podcast -->
                 <div class="card">
                     <div class="card-top-bar" style="background: var(--accent-pink);"></div>
                     <i class="fa-solid fa-headphones main-icon" style="color: var(--accent-pink);"></i>
-                    <h3>The Audio Podcast</h3>
-                    <p style="font-size: 1rem; margin-bottom: 1rem;">Turn a boring 80-page PDF into a 10-minute engaging AI Podcast.</p>
-                    <p style="font-size: 1rem; color: var(--text-main); font-weight: 600;">The ultimate time-saver:</p>
-                    <ul class="stage-list" style="font-size: 0.95rem; margin-top: 0.5rem;">
-                        <li><i class="fa-solid fa-car" style="color: var(--accent-pink);"></i> Listen and absorb deep project knowledge while driving to a viewing.</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <div class="card-top-bar" style="background: var(--accent-blue);"></div>
-                    <i class="fa-solid fa-scale-balanced main-icon" style="color: var(--accent-blue);"></i>
-                    <h3>The Legal Translator</h3>
-                    <p style="font-size: 1rem; margin-bottom: 1rem;">Upload a complex Sales & Purchase Agreement (SPA) full of legal jargon.</p>
-                    <p style="font-size: 1rem; color: var(--text-main); font-weight: 600;">Bridge the gap for clients:</p>
-                    <div class="prompt-block" style="border-left-color: var(--accent-blue); padding: 1rem; font-size: 0.95rem;">"Summarize the termination clauses on page 42 in simple, layperson English for my client."</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Slide 9: Interactive Pipeline 1 (Canva) -->
-        <section class="slide">
-            <div>
-                <h2 class="slide-title">Ecosystem Pipeline 1: The IG Carousel</h2>
-                <span class="slide-subtitle">NotebookLM + Gemini + Canva = 5 visual slides generated in 60 seconds. Click nodes to reveal actions.</span>
-            </div>
-            <div class="content-area">
-                <div class="pipeline-flow">
-                    <!-- Node 1 -->
-                    <div class="pipe-node active" onclick="showPipelineDetail('pipe1-step1', this)">
-                        <i class="fa-solid fa-database pipe-icon" style="color: var(--accent-orange);"></i>
-                        <h4>1. NotebookLM</h4>
-                        <p style="font-size: 0.9rem; color: var(--text-muted);">Data Extraction</p>
-                    </div>
-                    <div class="pipe-arrow"><i class="fa-solid fa-arrow-right-long"></i></div>
-                    
-                    <!-- Node 2 -->
-                    <div class="pipe-node" onclick="showPipelineDetail('pipe1-step2', this)">
-                        <i class="fa-solid fa-table pipe-icon" style="color: var(--accent-purple);"></i>
-                        <h4>2. Gemini</h4>
-                        <p style="font-size: 0.9rem; color: var(--text-muted);">CSV Formatting</p>
-                    </div>
-                    <div class="pipe-arrow"><i class="fa-solid fa-arrow-right-long"></i></div>
-                    
-                    <!-- Node 3 -->
-                    <div class="pipe-node" onclick="showPipelineDetail('pipe1-step3', this)">
-                        <i class="fa-solid fa-paintbrush pipe-icon" style="color: var(--accent-sky);"></i>
-                        <h4>3. Canva</h4>
-                        <p style="font-size: 0.9rem; color: var(--text-muted);">Bulk Create</p>
-                    </div>
-                </div>
-
-                <!-- Detail Boxes -->
-                <div id="pipe1-step1" class="pipe-detail-box active" style="border-left-color: var(--accent-orange);">
-                    <h3>Step 1: Ingest & Extract</h3>
-                    <p style="font-size: 1.2rem; margin-bottom: 1rem;">Upload your Developer Brochure into NotebookLM. We need facts, not fluff.</p>
-                    <div class="prompt-block">"Extract the 5 strongest selling points from this document. Output ONLY facts, ROI data, and hard numbers. No marketing adjectives."</div>
-                </div>
-
-                <div id="pipe1-step2" class="pipe-detail-box" style="border-left-color: var(--accent-purple);">
-                    <h3>Step 2: Format for Design</h3>
-                    <p style="font-size: 1.2rem; margin-bottom: 1rem;">Copy the facts from NotebookLM into Gemini to structure them for Canva.</p>
-                    <div class="prompt-block">"Format these 5 facts into a CSV table with exactly two columns: [Headline] and [Subtext]. Keep text extremely brief, max 8 words per column, suitable for Instagram Carousel slides."</div>
-                </div>
-
-                <div id="pipe1-step3" class="pipe-detail-box" style="border-left-color: var(--accent-sky);">
-                    <h3>Step 3: Automated Design</h3>
-                    <p style="font-size: 1.2rem; margin-bottom: 1rem;">In Canva, open an IG Post Template.</p>
-                    <ul class="stage-list" style="font-size: 1.2rem;">
-                        <li><i class="fa-solid fa-1"></i> Go to Apps -> Search for <strong>"Bulk Create"</strong>.</li>
-                        <li><i class="fa-solid fa-2"></i> Select "Enter Data Manually" and paste the CSV table from Gemini.</li>
-                        <li><i class="fa-solid fa-3"></i> Right-click text boxes in your template -> <strong>"Connect Data"</strong> (Link Headline to Headline, Subtext to Subtext).</li>
-                        <li><i class="fa-solid fa-4"></i> Click "Generate" to instantly produce 5 beautifully designed, factual slides.</li>
+                    <h3>3. The Audio Overview</h3>
+                    <p style="font-size: 1.1rem; margin-bottom: 1rem;">Turn a complex Sales & Purchase Agreement (SPA) into a 10-minute AI Podcast discussion.</p>
+                    <ul class="stage-list" style="font-size: 1.1rem; margin-top: 1rem;">
+                        <li><i class="fa-solid fa-car" style="color: var(--accent-pink);"></i> Listen and absorb deep project legalities while driving to a viewing.</li>
                     </ul>
                 </div>
             </div>
         </section>
 
-        <!-- Slide 10: Interactive Pipeline 2 (Pitch Deck) -->
+        <!-- Slide 11: Section C Divider -->
+        <section class="slide section-slide">
+            <div class="content-area center-text">
+                <h2>SECTION C</h2>
+                <h1>The Google Ecosystem</h1>
+                <p>NotebookLM + Gemini + Google Slides.</p>
+                <hr>
+            </div>
+        </section>
+
+        <!-- Slide 12: The Rationale (Why Ecosystem?) -->
         <section class="slide">
             <div>
-                <h2 class="slide-title">Ecosystem Pipeline 2: The Pitch Deck</h2>
+                <h2 class="slide-title">The Rationale: Why build a system?</h2>
+                <span class="slide-subtitle">Why open Gemini when NotebookLM already has the data?</span>
+            </div>
+            <div class="content-area grid-2">
+                <div class="card" style="border-top: 6px solid var(--accent-red); justify-content: center;">
+                    <h3 style="color: var(--accent-red); font-size: 2.5rem; margin-bottom: 1rem;"><i class="fa-solid fa-xmark"></i> Without System</h3>
+                    <p style="font-size: 1.4rem; color: var(--text-main); margin-bottom: 1rem;">Manual Workflow:</p>
+                    <ul class="stage-list" style="font-size: 1.2rem; color: var(--text-muted);">
+                        <li>Read 80-page PDF manually <strong>(2 Hours)</strong></li>
+                        <li>Copy/paste and manually resize text to fit slides <strong>(2 Hours)</strong></li>
+                        <li>High risk of missing crucial ROI data points.</li>
+                    </ul>
+                    <div style="margin-top: 2rem; padding: 1rem; background: rgba(239,68,68,0.1); border-radius: 8px; color: var(--accent-red); font-weight: 700; font-size: 1.5rem; text-align: center;">Total Time: 4 Hours</div>
+                </div>
+                <div class="card" style="border-top: 6px solid var(--accent-green); justify-content: center;">
+                    <h3 style="color: var(--accent-green); font-size: 2.5rem; margin-bottom: 1rem;"><i class="fa-solid fa-check-double"></i> With Ecosystem</h3>
+                    <p style="font-size: 1.4rem; color: var(--text-main); margin-bottom: 1rem;">The Synergy:</p>
+                    <ul class="stage-list" style="font-size: 1.2rem; color: var(--text-muted);">
+                        <li><strong>NotebookLM:</strong> Extracts facts with 100% accuracy. <strong>(1 Min)</strong></li>
+                        <li><strong>Gemini:</strong> Formats the text to fit slide boundaries and exports instantly to Google Slides. <strong>(1 Min)</strong></li>
+                    </ul>
+                    <div style="margin-top: 2rem; padding: 1rem; background: rgba(16,185,129,0.1); border-radius: 8px; color: var(--accent-green); font-weight: 700; font-size: 1.5rem; text-align: center;">Total Time: 2 Minutes</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 13: Interactive Pipeline (Pitch Deck) -->
+        <section class="slide">
+            <div>
+                <h2 class="slide-title">Ecosystem Pipeline: The Pitch Deck</h2>
                 <span class="slide-subtitle">NotebookLM -> Gemini -> Google Slides. Zero manual resizing. Click nodes to reveal.</span>
             </div>
             <div class="content-area">
@@ -605,7 +585,7 @@ Format: Output as [ Format, e.g., 3 bullet points under 150 words ].</textarea>
                     <div class="pipe-node active" onclick="showPipelineDetail('pipe2-step1', this)">
                         <i class="fa-solid fa-magnifying-glass-chart pipe-icon" style="color: var(--accent-orange);"></i>
                         <h4>1. NotebookLM</h4>
-                        <p style="font-size: 0.9rem; color: var(--text-muted);">Targeted Extraction</p>
+                        <p style="font-size: 1rem; color: var(--text-muted);">Data Extraction</p>
                     </div>
                     <div class="pipe-arrow"><i class="fa-solid fa-arrow-right-long"></i></div>
                     
@@ -613,7 +593,7 @@ Format: Output as [ Format, e.g., 3 bullet points under 150 words ].</textarea>
                     <div class="pipe-node" onclick="showPipelineDetail('pipe2-step2', this)">
                         <i class="fa-solid fa-layer-group pipe-icon" style="color: var(--accent-purple);"></i>
                         <h4>2. Gemini</h4>
-                        <p style="font-size: 0.9rem; color: var(--text-muted);">Hard Constraints</p>
+                        <p style="font-size: 1rem; color: var(--text-muted);">Slide Formatting</p>
                     </div>
                     <div class="pipe-arrow"><i class="fa-solid fa-arrow-right-long"></i></div>
                     
@@ -621,21 +601,21 @@ Format: Output as [ Format, e.g., 3 bullet points under 150 words ].</textarea>
                     <div class="pipe-node" onclick="showPipelineDetail('pipe2-step3', this)">
                         <i class="fa-brands fa-google-drive pipe-icon" style="color: var(--accent-green);"></i>
                         <h4>3. Google Slides</h4>
-                        <p style="font-size: 0.9rem; color: var(--text-muted);">One-Click Export</p>
+                        <p style="font-size: 1rem; color: var(--text-muted);">One-Click Export</p>
                     </div>
                 </div>
 
                 <!-- Detail Boxes -->
                 <div id="pipe2-step1" class="pipe-detail-box active" style="border-left-color: var(--accent-orange);">
                     <h3>Step 1: The Foreign Investor Lens</h3>
-                    <p style="font-size: 1.2rem; margin-bottom: 1rem;">Upload the 80-page chaos. Force the AI to look through a specific lens.</p>
-                    <div class="prompt-block">"Based strictly on the Clouthaus documents: Identify the top 3 selling points for a **Foreign Investor** focused heavily on rental yield. Ignore all lifestyle fluff. Focus ONLY on transit proximity, PSF comparisons, and developer guarantees."</div>
+                    <p style="font-size: 1.3rem; margin-bottom: 1rem;">Upload the 80-page chaos. Force NotebookLM to extract only the facts.</p>
+                    <div class="prompt-block" style="border-left-color: var(--accent-orange);">"Based strictly on the Clouthaus documents: Identify the top 3 selling points for a **Foreign Investor** focused heavily on rental yield. Ignore all lifestyle fluff. Focus ONLY on transit proximity, PSF comparisons, and developer guarantees."</div>
                 </div>
 
                 <div id="pipe2-step2" class="pipe-detail-box" style="border-left-color: var(--accent-purple);">
                     <h3>Step 2: The Secret - Hard Boundaries</h3>
-                    <p style="font-size: 1.2rem; margin-bottom: 1rem;">When building slides, you MUST force character limits so text doesn't overflow the slide template.</p>
-                    <div class="prompt-block">"Convert this verified data into a 5-slide Pitch Deck outline.
+                    <p style="font-size: 1.3rem; margin-bottom: 1rem;">Copy NotebookLM's output into Gemini. You MUST force character limits so text doesn't overflow the slide template.</p>
+                    <div class="prompt-block" style="border-left-color: var(--accent-purple);">"Convert this verified data into a 5-slide Pitch Deck outline.
 Strict formatting required:
 Slide X: [Main Title]
 - [Bullet point 1 - MAXIMUM 10 words]
@@ -644,22 +624,21 @@ Slide X: [Main Title]
 
                 <div id="pipe2-step3" class="pipe-detail-box" style="border-left-color: var(--accent-green);">
                     <h3>Step 3: Seamless Handoff</h3>
-                    <p style="font-size: 1.2rem; margin-bottom: 1rem;">Because you forced Gemini to use <strong>max 10 words</strong>, the text is perfectly sized.</p>
-                    <ul class="stage-list" style="font-size: 1.2rem;">
+                    <p style="font-size: 1.3rem; margin-bottom: 1rem;">Because you forced Gemini to use <strong>max 10 words</strong>, the text is perfectly sized.</p>
+                    <ul class="stage-list" style="font-size: 1.3rem;">
                         <li><i class="fa-solid fa-share-from-square" style="color: var(--accent-green);"></i> Click the "Export to Google Docs / Slides" button at the bottom of the Gemini response.</li>
-                        <li><i class="fa-solid fa-wand-magic-sparkles" style="color: var(--accent-green);"></i> Apply your PropNex corporate template.</li>
-                        <li><i class="fa-solid fa-clock-rotate-left" style="color: var(--accent-green);"></i> <strong>Result:</strong> A 4-hour formatting job reduced to 15 minutes.</li>
+                        <li><i class="fa-solid fa-wand-magic-sparkles" style="color: var(--accent-green);"></i> Apply your PropNex corporate template inside Google Slides. Done.</li>
                     </ul>
                 </div>
             </div>
         </section>
 
-        <!-- Slide 11: Closing -->
+        <!-- Slide 14: Closing -->
         <section class="slide">
             <div class="content-area center-text" style="justify-content: center;">
                 <h1 style="font-size: clamp(3rem, 5vw, 4.5rem); line-height: 1.3; font-weight: 800; margin-bottom: 2rem;">"Not taken from one & another.<br><span class="gradient-text">But contribute to one & another.</span>"</h1>
                 <p style="font-size: 2rem; color: var(--text-muted); max-width: 1000px; margin: 0 auto 3rem auto;">The future belongs to the negotiator who builds intelligent systems, not the one who simply works longer hours.</p>
-                <div style="background: #fff; border: 2px solid var(--accent-blue); padding: 1.5rem 4rem; border-radius: 50px; display: inline-block; box-shadow: var(--shadow-lg); cursor: pointer; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                <div style="background: var(--bg-card); border: 2px solid var(--accent-blue); padding: 1.5rem 4rem; border-radius: 50px; display: inline-block; box-shadow: var(--shadow-glow); cursor: pointer; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
                     <p style="font-size: 2.5rem; color: var(--accent-blue); font-weight: 800; margin: 0; letter-spacing: 2px;">Q&A SESSION</p>
                 </div>
             </div>
@@ -673,7 +652,7 @@ Slide X: [Main Title]
         <div id="progress-container">
             <div id="progress-bar"></div>
         </div>
-        <div id="page-indicator">1 / 11</div>
+        <div id="page-indicator">1 / 14</div>
         <button class="nav-btn" id="next-btn" onclick="changeSlide(1)">Next <i class="fa-solid fa-arrow-right"></i></button>
     </div>
 
