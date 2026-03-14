@@ -3,33 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PropNex AI Masterclass - Dry Goods Edition</title>
+    <title>PropNex AI Masterclass - Google Ecosystem Edition</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
-            --bg-main: #020617; /* Deep Slate */
+            --bg-main: #020617; 
             --bg-card: #0f172a;
             --bg-card-hover: #1e293b;
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
             
-            /* Brand Accents */
             --accent-blue: #38bdf8; 
             --accent-pink: #ec4899; 
             --accent-green: #10b981; 
             --accent-orange: #f59e0b; 
             --accent-purple: #a855f7; 
             
-            /* AI Brand Colors */
             --brand-chatgpt: #10a37f;
             --brand-claude: #d97757;
             --brand-gemini: #8b5cf6;
             --brand-perplexity: #2dd4bf;
             --brand-notebooklm: #4285f4;
-            --brand-canva: #00c4cc;
 
             --border-color: rgba(255, 255, 255, 0.1);
             --shadow-lg: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
@@ -54,36 +51,9 @@
         }
 
         /* --- SLIDE CONTAINER --- */
-        #app-container {
-            position: relative;
-            z-index: 1;
-            flex-grow: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 2rem;
-            height: calc(100vh - 80px);
-        }
-
-        .slide {
-            background-color: var(--bg-card);
-            border-radius: 20px; 
-            box-shadow: var(--shadow-lg);
-            border: 1px solid var(--border-color);
-            width: 100%;
-            max-width: 1400px;
-            height: 100%;
-            padding: clamp(2rem, 4vw, 3rem);
-            display: none;
-            flex-direction: column;
-            opacity: 0;
-            transform: scale(0.98) translateY(10px);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
-            overflow-y: auto;
-        }
-
+        #app-container { position: relative; z-index: 1; flex-grow: 1; display: flex; justify-content: center; align-items: center; padding: 2rem; height: calc(100vh - 80px); }
+        .slide { background-color: var(--bg-card); border-radius: 20px; box-shadow: var(--shadow-lg); border: 1px solid var(--border-color); width: 100%; max-width: 1400px; height: 100%; padding: clamp(2rem, 4vw, 3rem); display: none; flex-direction: column; opacity: 0; transform: scale(0.98) translateY(10px); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); overflow-y: auto; }
         .slide.active { display: flex; opacity: 1; transform: scale(1) translateY(0); }
-
         .slide::-webkit-scrollbar { width: 8px; }
         .slide::-webkit-scrollbar-track { background: transparent; }
         .slide::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
@@ -93,7 +63,6 @@
         h2.slide-title { font-size: clamp(2rem, 3vw, 2.8rem); font-weight: 800; margin-bottom: 0.5rem; color: var(--text-main); }
         .slide-subtitle { font-size: clamp(1.1rem, 1.5vw, 1.4rem); color: var(--text-muted); font-weight: 600; display: block; margin-bottom: 2rem; }
         p { font-size: clamp(1.1rem, 1.3vw, 1.2rem); color: var(--text-muted); line-height: 1.6; }
-
         .gradient-text { background: linear-gradient(135deg, var(--accent-blue), var(--accent-pink)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
         /* --- LAYOUT UTILITIES --- */
@@ -102,12 +71,10 @@
         .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 2rem; }
         .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
         .split-30-70 { display: grid; grid-template-columns: 3.5fr 6.5fr; gap: 40px; align-items: stretch; height: 100%; }
+        .split-40-60 { display: grid; grid-template-columns: 4fr 6fr; gap: 40px; align-items: stretch; height: 100%; }
         
         /* --- CARDS & UI COMPONENTS --- */
-        .card {
-            background-color: var(--bg-card-hover); border-radius: 16px; padding: 2rem; border: 1px solid var(--border-color);
-            box-shadow: var(--shadow-sm); display: flex; flex-direction: column; position: relative; overflow: hidden;
-        }
+        .card { background-color: var(--bg-card-hover); border-radius: 16px; padding: 2rem; border: 1px solid var(--border-color); box-shadow: var(--shadow-sm); display: flex; flex-direction: column; position: relative; overflow: hidden; }
         .card h3 { font-size: 1.6rem; margin-bottom: 1rem; color: var(--text-main); font-weight: 700; }
         .card-top-bar { position: absolute; top: 0; left: 0; width: 100%; height: 6px; }
 
@@ -115,35 +82,27 @@
         ul.stage-list li { display: flex; align-items: flex-start; gap: 1rem; font-size: 1.1rem; color: var(--text-main); line-height: 1.5; }
         ul.stage-list li i { font-size: 1.1rem; margin-top: 0.3rem; flex-shrink: 0; }
 
-        .prompt-block {
-            background: #020617; border-left: 4px solid var(--accent-pink); border-radius: 8px;
-            padding: 1.2rem 1.5rem; font-family: 'Courier New', Courier, monospace; color: var(--accent-green);
-            font-size: 1.1rem; line-height: 1.5; font-weight: 600; white-space: pre-wrap; width: 100%; margin-top: 1rem;
-        }
+        .prompt-block { background: #020617; border-left: 4px solid var(--accent-pink); border-radius: 8px; padding: 1.2rem 1.5rem; font-family: 'Courier New', Courier, monospace; color: var(--accent-green); font-size: 1.1rem; line-height: 1.5; font-weight: 600; white-space: pre-wrap; width: 100%; margin-top: 1rem; }
 
         /* --- Brand Logos --- */
-        .brand-logo { width: 50px; height: 50px; margin-bottom: 15px; display: inline-flex; align-items: center; justify-content: center; }
-        .brand-logo svg { width: 100%; height: 100%; }
-        .brand-logo-large { width: 80px; height: 80px; margin-bottom: 20px; }
+        .brand-logo { display: inline-flex; align-items: center; justify-content: center; }
+        .logo-cell { display: flex; align-items: center; gap: 15px; font-weight: 700; font-size: 1.2rem; }
+        .logo-cell svg { width: 32px; height: 32px; flex-shrink: 0; }
 
         /* --- INTERACTIVE: COMPARISON TABLE --- */
-        .matrix-container { display: flex; flex-direction: column; gap: 2rem; height: 100%; }
         table.styled-table { width: 100%; border-collapse: separate; border-spacing: 0; border-radius: 12px; overflow: hidden; border: 1px solid var(--border-color); }
         table.styled-table th, table.styled-table td { padding: 1.2rem 1.5rem; text-align: left; background: var(--bg-card-hover); border-bottom: 1px solid var(--border-color); font-size: 1.1rem; }
         table.styled-table th { background: #020617; color: var(--text-main); font-weight: 800; text-transform: uppercase; letter-spacing: 1px; font-size: 1rem;}
         table.styled-table tr:last-child td { border-bottom: none; }
-        .logo-cell { display: flex; align-items: center; gap: 15px; font-weight: 700; font-size: 1.2rem; }
-        .logo-cell svg { width: 30px; height: 30px; }
 
         /* --- VERTICAL TABS (NotebookLM Deep Dive) --- */
         .v-tabs-container { display: flex; height: 100%; border: 1px solid var(--border-color); border-radius: 16px; overflow: hidden; }
-        .v-tabs-menu { width: 300px; background: #020617; display: flex; flex-direction: column; border-right: 1px solid var(--border-color); }
-        .v-tab-btn { padding: 1.5rem; text-align: left; background: transparent; border: none; color: var(--text-muted); font-size: 1.2rem; font-weight: 700; cursor: pointer; transition: all 0.2s; border-left: 4px solid transparent; font-family: inherit; }
+        .v-tabs-menu { width: 320px; background: #020617; display: flex; flex-direction: column; border-right: 1px solid var(--border-color); }
+        .v-tab-btn { padding: 1.5rem; text-align: left; background: transparent; border: none; color: var(--text-muted); font-size: 1.1rem; font-weight: 700; cursor: pointer; transition: all 0.2s; border-left: 4px solid transparent; font-family: inherit; display: flex; align-items: center; gap: 12px;}
         .v-tab-btn:hover { background: rgba(255,255,255,0.05); color: var(--text-main); }
         .v-tab-btn.active { background: var(--bg-card-hover); color: var(--accent-blue); border-left-color: var(--accent-blue); }
         .v-tab-content { flex-grow: 1; padding: 3rem; background: var(--bg-card-hover); display: none; animation: fadeIn 0.4s ease; }
         .v-tab-content.active { display: block; }
-        
         .step-box { background: #020617; border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; border: 1px solid var(--border-color); }
         .step-label { display: inline-block; background: var(--accent-blue); color: #020617; font-weight: 800; padding: 0.2rem 0.8rem; border-radius: 4px; font-size: 0.9rem; margin-bottom: 0.5rem; text-transform: uppercase; }
 
@@ -152,10 +111,8 @@
         .pipe-node { flex: 1; background: var(--bg-card-hover); border: 2px solid var(--border-color); border-radius: 16px; padding: 1.5rem; text-align: center; cursor: pointer; transition: all 0.3s; position: relative; }
         .pipe-node:hover { transform: translateY(-5px); box-shadow: var(--shadow-glow); border-color: var(--text-muted); }
         .pipe-node.active { border-color: var(--accent-blue); background: rgba(56,189,248,0.05); }
-        .pipe-node h4 { font-size: 1.2rem; font-weight: 800; margin-bottom: 0.5rem; }
-        
+        .pipe-node h4 { font-size: 1.1rem; font-weight: 800; margin-bottom: 0.5rem; }
         .pipe-arrow { display: flex; align-items: center; justify-content: center; color: #475569; font-size: 2rem; padding-top: 3rem; }
-        
         .pipe-detail-box { background: #020617; border: 1px solid var(--border-color); border-radius: 16px; padding: 2.5rem; display: none; animation: fadeIn 0.4s ease; border-left: 6px solid var(--accent-blue); }
         .pipe-detail-box.active { display: block; }
         .pipe-detail-box h3 { font-size: 1.6rem; margin-bottom: 1rem; color: var(--text-main); }
@@ -171,40 +128,32 @@
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* Tags */
         .tag { padding: 0.3rem 0.8rem; border-radius: 50px; font-weight: 800; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px;}
         .section-slide { justify-content: center; align-items: center; text-align: center; }
         .section-slide h2 { font-size: 32px; color: var(--accent-blue); letter-spacing: 6px; margin-bottom: 25px; text-transform: uppercase; font-weight: 800;}
         .section-slide h1 { font-size: 72px; font-weight: 800; margin-bottom: 30px;}
         .section-slide hr { width: 100px; height: 4px; background: var(--accent-blue); border: none; margin-top: 50px; }
         
-        /* Interactive Input */
         .live-lab-input { background: #020617; border: 2px dashed var(--accent-blue); border-radius: 12px; padding: 1.5rem; color: var(--text-main); font-size: 1.2rem; font-family: 'Courier New', Courier, monospace; width: 100%; resize: vertical; min-height: 180px; margin-bottom: 1rem; line-height: 1.6; font-weight: 600; }
         .live-lab-input:focus { outline: none; border-style: solid; box-shadow: var(--shadow-glow); }
         .btn-action { background: var(--accent-blue); color: #fff; border: none; padding: 1rem 2rem; border-radius: 50px; font-size: 1.1rem; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 0.5rem; transition: all 0.2s; }
         .btn-action:hover { transform: translateY(-2px); box-shadow: var(--shadow-glow); }
 
-        /* Logos Definitions (Inline SVG) */
+        /* Gradients for SVGs */
         .logo-chatgpt { fill: var(--brand-chatgpt); }
         .logo-claude { fill: var(--brand-claude); }
         .logo-gemini { fill: url(#gemini-grad); }
         .logo-perplexity { fill: var(--brand-perplexity); }
         .logo-notebooklm { fill: var(--brand-notebooklm); }
-        .logo-canva { fill: url(#canva-grad); }
     </style>
 </head>
 <body>
 
-    <!-- SVG Definitions for Gradients -->
     <svg style="width:0;height:0;position:absolute;" aria-hidden="true" focusable="false">
         <linearGradient id="gemini-grad" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" stop-color="#4285f4" />
             <stop offset="50%" stop-color="#9b72cb" />
             <stop offset="100%" stop-color="#d96570" />
-        </linearGradient>
-        <linearGradient id="canva-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#00C4CC" />
-            <stop offset="100%" stop-color="#7D2AE8" />
         </linearGradient>
     </svg>
 
@@ -347,7 +296,7 @@ Format: Output as [ Format, e.g., a short intro, 3 bullet points, and a CTA unde
                     <tbody>
                         <tr>
                             <td class="logo-cell">
-                                <svg viewBox="0 0 24 24" class="logo-chatgpt"><path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.073zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.8956zm16.0993 3.8558L12.5973 8.3829a.7712.7712 0 0 0-.7807 0L5.9738 11.7514v-2.3324a.0804.0804 0 0 1 .0332-.0615l4.0356-2.3324a4.4992 4.4992 0 0 1 6.1408 1.6464 4.4708 4.4708 0 0 1 .5346 3.0137l-.142-.0852-4.783-2.7582zm2.0107-3.0231l-4.8303 2.7865a.0757.0757 0 0 1-.071 0l-2.02-1.1686V4.718a.7664.7664 0 0 0-.3879-.6765L7.3086 1.4283a4.504 4.504 0 0 1 5.8144 3.3543v5.6769l4.7783 2.7582a.4708.4708 0 0 0 .1419.0804v-.142a4.485 4.485 0 0 1-2.3655-1.9728zM12.0004 14.545a2.545 2.545 0 1 1 0-5.0901 2.545 2.545 0 0 1 0 5.09z"/></svg>
+                                <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" class="logo-chatgpt"><path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.073zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.8956zm16.0993 3.8558L12.5973 8.3829a.7712.7712 0 0 0-.7807 0L5.9738 11.7514v-2.3324a.0804.0804 0 0 1 .0332-.0615l4.0356-2.3324a4.4992 4.4992 0 0 1 6.1408 1.6464 4.4708 4.4708 0 0 1 .5346 3.0137l-.142-.0852-4.783-2.7582zm2.0107-3.0231l-4.8303 2.7865a.0757.0757 0 0 1-.071 0l-2.02-1.1686V4.718a.7664.7664 0 0 0-.3879-.6765L7.3086 1.4283a4.504 4.504 0 0 1 5.8144 3.3543v5.6769l4.7783 2.7582a.4708.4708 0 0 0 .1419.0804v-.142a4.485 4.485 0 0 1-2.3655-1.9728zM12.0004 14.545a2.545 2.545 0 1 1 0-5.0901 2.545 2.545 0 0 1 0 5.09z"/></svg>
                                 ChatGPT
                             </td>
                             <td><span class="tag" style="background: rgba(16, 163, 127, 0.2); color: var(--brand-chatgpt);">Logic & Ideation</span></td>
@@ -355,7 +304,7 @@ Format: Output as [ Format, e.g., a short intro, 3 bullet points, and a CTA unde
                         </tr>
                         <tr>
                             <td class="logo-cell">
-                                <svg viewBox="0 0 24 24" class="logo-claude"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.18 14.22a6.38 6.38 0 1 1 0-8.44l1.37-1.37a8.38 8.38 0 1 0 0 11.18l-1.37-1.37z"/></svg>
+                                <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" class="logo-claude"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.18 14.22a6.38 6.38 0 1 1 0-8.44l1.37-1.37a8.38 8.38 0 1 0 0 11.18l-1.37-1.37z"/></svg>
                                 Claude 3.5
                             </td>
                             <td><span class="tag" style="background: rgba(217, 119, 87, 0.2); color: var(--brand-claude);">Nuance & Copy</span></td>
@@ -363,7 +312,7 @@ Format: Output as [ Format, e.g., a short intro, 3 bullet points, and a CTA unde
                         </tr>
                         <tr>
                             <td class="logo-cell">
-                                <svg viewBox="0 0 24 24" class="logo-gemini"><path d="M12 2L15 9L22 12L15 15L12 22L9 15L2 12L9 9L12 2Z"/></svg>
+                                <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" class="logo-gemini"><path d="M12 2L15 9L22 12L15 15L12 22L9 15L2 12L9 9L12 2Z"/></svg>
                                 Gemini
                             </td>
                             <td><span class="tag" style="background: rgba(139, 92, 246, 0.2); color: var(--brand-gemini);">Google Ecosystem</span></td>
@@ -371,7 +320,7 @@ Format: Output as [ Format, e.g., a short intro, 3 bullet points, and a CTA unde
                         </tr>
                         <tr>
                             <td class="logo-cell">
-                                <svg viewBox="0 0 24 24" class="logo-perplexity"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                                <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" class="logo-perplexity"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
                                 Perplexity
                             </td>
                             <td><span class="tag" style="background: rgba(45, 212, 191, 0.2); color: var(--brand-perplexity);">Live Research</span></td>
@@ -390,7 +339,7 @@ Format: Output as [ Format, e.g., a short intro, 3 bullet points, and a CTA unde
         <section class="slide">
             <div class="content-area center-text">
                 <div class="brand-logo" style="width: 120px; height: 120px; margin-bottom: 2rem;">
-                    <svg viewBox="0 0 24 24" class="logo-notebooklm"><path d="M4 2h14a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm2 4v2h10V6H6zm0 4v2h10v-2H6zm0 4v2h7v-2H6z"/></svg>
+                    <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" class="logo-notebooklm"><path d="M4 2h14a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm2 4v2h10V6H6zm0 4v2h10v-2H6zm0 4v2h7v-2H6z"/></svg>
                 </div>
                 <h1 style="font-size: 5.5rem; font-weight: 800; margin-bottom: 1rem;">The Outlier: <span style="color: var(--brand-notebooklm);">NotebookLM</span></h1>
                 <p style="font-size: 2.2rem; color: var(--text-muted); max-width: 900px; line-height: 1.5;">
@@ -399,67 +348,94 @@ Format: Output as [ Format, e.g., a short intro, 3 bullet points, and a CTA unde
             </div>
         </section>
 
-        <!-- Slide 9: NotebookLM Deep Dive (Interactive Vertical Tabs) -->
+        <!-- Slide 9: NotebookLM Deep Dive (Interactive Vertical Tabs - 5 Features) -->
         <section class="slide">
             <div>
                 <h2 class="slide-title">NotebookLM: Standalone Mastery</h2>
-                <span class="slide-subtitle">How to extract massive value using ONLY NotebookLM. Click tabs to view SOPs.</span>
+                <span class="slide-subtitle">5 ways to extract massive value using ONLY NotebookLM. Click tabs to view SOPs.</span>
             </div>
             <div class="content-area">
                 <div class="v-tabs-container">
                     <!-- Tab Menu -->
                     <div class="v-tabs-menu">
-                        <button class="v-tab-btn active" onclick="switchVTab('vtab-info', this)"><i class="fa-solid fa-table-columns" style="width:30px;"></i> Infographic Miner</button>
-                        <button class="v-tab-btn" onclick="switchVTab('vtab-cheat', this)"><i class="fa-solid fa-shield-halved" style="width:30px;"></i> Objection Cheat Sheet</button>
-                        <button class="v-tab-btn" onclick="switchVTab('vtab-pitch', this)"><i class="fa-solid fa-layer-group" style="width:30px;"></i> Presentation Builder</button>
+                        <button class="v-tab-btn active" onclick="switchVTab('vtab-audio', this)"><i class="fa-solid fa-headphones" style="width:25px;"></i> Audio Podcast</button>
+                        <button class="v-tab-btn" onclick="switchVTab('vtab-data', this)"><i class="fa-solid fa-table" style="width:25px;"></i> Data Table</button>
+                        <button class="v-tab-btn" onclick="switchVTab('vtab-info', this)"><i class="fa-solid fa-chart-pie" style="width:25px;"></i> Infographic Miner</button>
+                        <button class="v-tab-btn" onclick="switchVTab('vtab-flash', this)"><i class="fa-solid fa-clone" style="width:25px;"></i> Flashcards</button>
+                        <button class="v-tab-btn" onclick="switchVTab('vtab-pitch', this)"><i class="fa-solid fa-layer-group" style="width:25px;"></i> Slide Deck Architect</button>
                     </div>
                     
                     <!-- Tab Contents -->
-                    <!-- Content 1: Infographic -->
-                    <div id="vtab-info" class="v-tab-content active">
-                        <h3 style="font-size: 2rem; margin-bottom: 0.5rem;"><i class="fa-solid fa-table-columns text-blue"></i> The Infographic Miner</h3>
-                        <p style="color: var(--text-muted); margin-bottom: 2rem; font-size: 1.2rem;">Hours of cross-referencing competitor projects done in 10 seconds. Get data ready for your designer.</p>
-                        
+                    <!-- 1. Audio Podcast -->
+                    <div id="vtab-audio" class="v-tab-content active">
+                        <h3 style="font-size: 2rem; margin-bottom: 0.5rem;"><i class="fa-solid fa-headphones text-blue"></i> The Audio Podcast</h3>
+                        <p style="color: var(--text-muted); margin-bottom: 2rem; font-size: 1.2rem;">Turn a boring 80-page Developer PDF into a 10-minute AI radio show.</p>
                         <div class="step-box">
                             <span class="step-label">Step 1: Ingest</span>
-                            <p style="font-size: 1.2rem; color: var(--text-main);">Upload Project A, B, and C's thick brochures and pricing PDFs.</p>
+                            <p style="font-size: 1.2rem; color: var(--text-main);">Upload the Developer's PDF brochure and pricing list.</p>
                         </div>
                         <div class="step-box">
-                            <span class="step-label" style="background: var(--accent-pink); color: #fff;">Step 2: Prompt</span>
-                            <div class="prompt-block" style="margin-top: 0.5rem;">"Extract the PSF, Maintenance Fee, and exact distance to the nearest MRT for all 3 projects. Output as a markdown table. Do not add marketing text."</div>
+                            <span class="step-label" style="background: var(--accent-pink); color: #fff;">Step 2: Generate</span>
+                            <p style="font-size: 1.2rem; color: var(--text-main);">Click <strong>"Audio Overview -> Generate"</strong>. Listen and absorb deep project knowledge while driving to a client viewing.</p>
                         </div>
                     </div>
 
-                    <!-- Content 2: Objection Cheat Sheet -->
-                    <div id="vtab-cheat" class="v-tab-content">
-                        <h3 style="font-size: 2rem; margin-bottom: 0.5rem;"><i class="fa-solid fa-shield-halved text-green"></i> The Objection Cheat Sheet</h3>
-                        <p style="color: var(--text-muted); margin-bottom: 2rem; font-size: 1.2rem;">Turn terrifying legal documents into a weapon to reassure your clients.</p>
-                        
+                    <!-- 2. Data Table -->
+                    <div id="vtab-data" class="v-tab-content">
+                        <h3 style="font-size: 2rem; margin-bottom: 0.5rem;"><i class="fa-solid fa-table text-green"></i> The Comparative Data Table</h3>
+                        <p style="color: var(--text-muted); margin-bottom: 2rem; font-size: 1.2rem;">Hours of cross-referencing competitor projects done in 10 seconds.</p>
                         <div class="step-box">
                             <span class="step-label" style="background: var(--accent-green); color: #fff;">Step 1: Ingest</span>
-                            <p style="font-size: 1.2rem; color: var(--text-main);">Upload the complex Sales & Purchase Agreement (SPA).</p>
+                            <p style="font-size: 1.2rem; color: var(--text-main);">Upload Project A, B, and C's thick brochures into one notebook.</p>
                         </div>
                         <div class="step-box">
                             <span class="step-label" style="background: var(--accent-pink); color: #fff;">Step 2: Prompt</span>
-                            <div class="prompt-block" style="margin-top: 0.5rem;">"List the top 5 legal objections or fears a foreign buyer might have from reading this SPA. For each, provide a 1-sentence layperson explanation to reassure them."</div>
+                            <div class="prompt-block" style="margin-top: 0.5rem;">"Extract the PSF, Maintenance Fee, and distance to the nearest MRT for all 3 projects. Output as a markdown table. Do not add marketing text."</div>
                         </div>
                     </div>
 
-                    <!-- Content 3: Presentation Builder -->
-                    <div id="vtab-pitch" class="v-tab-content">
-                        <h3 style="font-size: 2rem; margin-bottom: 0.5rem;"><i class="fa-solid fa-layer-group text-orange"></i> The Presentation Architect</h3>
-                        <p style="color: var(--text-muted); margin-bottom: 2rem; font-size: 1.2rem;">Don't read the 80-page fluff deck. Make it build a targeted pitch for you.</p>
-                        
+                    <!-- 3. Infographic Miner -->
+                    <div id="vtab-info" class="v-tab-content">
+                        <h3 style="font-size: 2rem; margin-bottom: 0.5rem;"><i class="fa-solid fa-chart-pie text-orange"></i> The Infographic Miner</h3>
+                        <p style="color: var(--text-muted); margin-bottom: 2rem; font-size: 1.2rem;">Extract clean, factual data specifically formatted for your graphic designer.</p>
                         <div class="step-box">
                             <span class="step-label" style="background: var(--accent-orange); color: #000;">Step 1: Ingest</span>
+                            <p style="font-size: 1.2rem; color: var(--text-main);">Upload the master plan and timeline documents.</p>
+                        </div>
+                        <div class="step-box">
+                            <span class="step-label" style="background: var(--accent-pink); color: #fff;">Step 2: Prompt</span>
+                            <div class="prompt-block" style="margin-top: 0.5rem;">"I am creating an infographic. Extract a chronological timeline of MRT completion dates and commercial hub openings from these docs. List Year -> Event."</div>
+                        </div>
+                    </div>
+
+                    <!-- 4. Flashcards -->
+                    <div id="vtab-flash" class="v-tab-content">
+                        <h3 style="font-size: 2rem; margin-bottom: 0.5rem;"><i class="fa-solid fa-clone text-purple"></i> Objection Flashcards</h3>
+                        <p style="color: var(--text-muted); margin-bottom: 2rem; font-size: 1.2rem;">Turn terrifying legal documents (SPA) into a cheat sheet to reassure clients.</p>
+                        <div class="step-box">
+                            <span class="step-label" style="background: var(--accent-purple); color: #fff;">Step 1: Ingest</span>
+                            <p style="font-size: 1.2rem; color: var(--text-main);">Upload the complex Sales & Purchase Agreement.</p>
+                        </div>
+                        <div class="step-box">
+                            <span class="step-label" style="background: var(--accent-pink); color: #fff;">Step 2: Prompt</span>
+                            <div class="prompt-block" style="margin-top: 0.5rem;">"Create a Q&A flashcard format. List the top 5 legal fears a foreign buyer might have reading this SPA, followed by a 1-sentence layperson explanation to reassure them."</div>
+                        </div>
+                    </div>
+
+                    <!-- 5. Slide Deck Architect -->
+                    <div id="vtab-pitch" class="v-tab-content">
+                        <h3 style="font-size: 2rem; margin-bottom: 0.5rem;"><i class="fa-solid fa-layer-group text-blue"></i> The Slide Deck Architect</h3>
+                        <p style="color: var(--text-muted); margin-bottom: 2rem; font-size: 1.2rem;">NotebookLM won't design the slides, but it will architect the perfect outline.</p>
+                        <div class="step-box">
+                            <span class="step-label" style="background: var(--accent-blue); color: #000;">Step 1: Ingest</span>
                             <p style="font-size: 1.2rem; color: var(--text-main);">Upload the Developer's generic 80-page PDF brochure.</p>
                         </div>
                         <div class="step-box">
                             <span class="step-label" style="background: var(--accent-pink); color: #fff;">Step 2: Prompt</span>
-                            <div class="prompt-block" style="margin-top: 0.5rem;">"Act as a McKinsey consultant. Outline a 5-slide pitch from this document. 
-Slide 1: Market Gap. Slide 2: The Solution (This Project). Slide 3: Hard ROI data. Slide 4: Floorplan advantage. Slide 5: CTA."</div>
+                            <div class="prompt-block" style="margin-top: 0.5rem;">"Act as a McKinsey consultant. Outline a 5-slide pitch from this document targeting investors. Provide: Slide Title, Subtitle, and 3 bullet points of ROI data per slide."</div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </section>
@@ -468,8 +444,8 @@ Slide 1: Market Gap. Slide 2: The Solution (This Project). Slide 3: Hard ROI dat
         <section class="slide section-slide">
             <div class="content-area center-text">
                 <h2>SECTION C</h2>
-                <h1>The Ecosystem Synergy</h1>
-                <p>NotebookLM + Gemini + Canva.<br>Why build a system instead of using one tool?</p>
+                <h1>The Google Ecosystem</h1>
+                <p>NotebookLM + Gemini + Gemini Canvas.<br>Why build a system instead of using one tool?</p>
                 <hr>
             </div>
         </section>
@@ -485,30 +461,30 @@ Slide 1: Market Gap. Slide 2: The Solution (This Project). Slide 3: Hard ROI dat
                     <!-- The Problem -->
                     <div style="background: #020617; padding: 2rem; border-radius: 16px; border: 1px solid var(--border-color); display: flex; flex-direction: column; justify-content: center;">
                         <h3 style="color: var(--accent-red); font-size: 1.8rem; margin-bottom: 1rem;"><i class="fa-solid fa-link-slash"></i> The Limitation</h3>
-                        <p style="font-size: 1.1rem; margin-bottom: 1rem;">NotebookLM is a genius at extracting facts, but it gives you a wall of raw text.</p>
-                        <p style="font-size: 1.1rem;">You cannot copy-paste a wall of text into a visually appealing Instagram Carousel or Pitch Deck.</p>
+                        <p style="font-size: 1.1rem; margin-bottom: 1rem;">NotebookLM is a genius at extracting facts, but it is terrible at formatting and writing copy.</p>
+                        <p style="font-size: 1.1rem;">It gives you a raw wall of text. You need an engine to polish, format, and export it.</p>
                     </div>
                     <!-- The Solution System -->
                     <div style="display: flex; flex-direction: column; gap: 15px;">
                         <div class="card" style="flex-direction: row; align-items: center; padding: 1.5rem 2rem; gap: 2rem;">
-                            <svg viewBox="0 0 24 24" style="width: 50px; fill: var(--brand-notebooklm);"><path d="M4 2h14a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm2 4v2h10V6H6zm0 4v2h10v-2H6zm0 4v2h7v-2H6z"/></svg>
+                            <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" style="width: 50px; fill: var(--brand-notebooklm);"><path d="M4 2h14a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm2 4v2h10V6H6zm0 4v2h10v-2H6zm0 4v2h7v-2H6z"/></svg>
                             <div>
                                 <h4 style="font-size: 1.4rem; font-weight: 800;">1. The Extractor (NotebookLM)</h4>
-                                <p style="font-size: 1rem;">Pulls accurate data from PDFs with zero hallucination.</p>
+                                <p style="font-size: 1rem; color: var(--text-muted);">Pulls accurate data from PDFs with zero hallucination.</p>
                             </div>
                         </div>
                         <div class="card" style="flex-direction: row; align-items: center; padding: 1.5rem 2rem; gap: 2rem;">
-                            <svg viewBox="0 0 24 24" style="width: 50px; fill: url(#gemini-grad);"><path d="M12 2L15 9L22 12L15 15L12 22L9 15L2 12L9 9L12 2Z"/></svg>
+                            <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" style="width: 50px; fill: url(#gemini-grad);"><path d="M12 2L15 9L22 12L15 15L12 22L9 15L2 12L9 9L12 2Z"/></svg>
                             <div>
-                                <h4 style="font-size: 1.4rem; font-weight: 800;">2. The Translator (Gemini)</h4>
-                                <p style="font-size: 1rem;">Applies hard character limits and converts text into a clean CSV format.</p>
+                                <h4 style="font-size: 1.4rem; font-weight: 800;">2. The Formatter (Gemini Chat)</h4>
+                                <p style="font-size: 1rem; color: var(--text-muted);">Applies tone, character limits, and visual structure (bullet points/tables).</p>
                             </div>
                         </div>
-                        <div class="card" style="flex-direction: row; align-items: center; padding: 1.5rem 2rem; gap: 2rem;">
-                            <svg viewBox="0 0 24 24" style="width: 50px; fill: url(#canva-grad);"><circle cx="12" cy="12" r="10"/></svg>
+                        <div class="card" style="flex-direction: row; align-items: center; padding: 1.5rem 2rem; gap: 2rem; border-color: var(--accent-purple);">
+                            <i class="fa-solid fa-pen-ruler" style="font-size: 3rem; color: var(--accent-purple); width: 50px; text-align: center;"></i>
                             <div>
-                                <h4 style="font-size: 1.4rem; font-weight: 800;">3. The Visual Engine (Canva)</h4>
-                                <p style="font-size: 1rem;">Uses 'Bulk Create' to turn that CSV into 10 designed slides in 1 click.</p>
+                                <h4 style="font-size: 1.4rem; font-weight: 800;">3. The Refiner (Gemini Canvas)</h4>
+                                <p style="font-size: 1rem; color: var(--text-muted);">A side-by-side workspace to collaboratively edit, rewrite specific paragraphs, and export to Docs.</p>
                             </div>
                         </div>
                     </div>
@@ -516,63 +492,93 @@ Slide 1: Market Gap. Slide 2: The Solution (This Project). Slide 3: Hard ROI dat
             </div>
         </section>
 
-        <!-- Slide 12: Interactive Pipeline (The Execution) -->
+        <!-- Slide 12: Deep Dive into Gemini Canvas -->
         <section class="slide">
             <div>
-                <h2 class="slide-title">The Ultimate Pipeline: 30-Day Campaign</h2>
-                <span class="slide-subtitle">Generate 10 Carousel posts in 5 minutes. Click nodes to reveal the exact SOP.</span>
+                <h2 class="slide-title">Unlocking <span style="color: var(--accent-purple);">Gemini Canvas</span></h2>
+                <span class="slide-subtitle">Stop re-prompting the whole document. Edit side-by-side like a pro.</span>
             </div>
-            <div class="content-area">
-                <div class="pipeline-flow">
-                    <div class="pipe-node active" onclick="showPipelineDetail('pipe1-step1', this)">
-                        <svg viewBox="0 0 24 24" style="width: 50px; fill: var(--brand-notebooklm); margin-bottom: 10px;"><path d="M4 2h14a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm2 4v2h10V6H6zm0 4v2h10v-2H6zm0 4v2h7v-2H6z"/></svg>
-                        <h4>1. NotebookLM</h4>
-                        <p style="font-size: 0.9rem; color: var(--text-muted);">Data Mining</p>
-                    </div>
-                    <div class="pipe-arrow"><i class="fa-solid fa-arrow-right-long"></i></div>
-                    
-                    <div class="pipe-node" onclick="showPipelineDetail('pipe1-step2', this)">
-                        <svg viewBox="0 0 24 24" style="width: 50px; fill: url(#gemini-grad); margin-bottom: 10px;"><path d="M12 2L15 9L22 12L15 15L12 22L9 15L2 12L9 9L12 2Z"/></svg>
-                        <h4>2. Gemini</h4>
-                        <p style="font-size: 0.9rem; color: var(--text-muted);">CSV Formatting</p>
-                    </div>
-                    <div class="pipe-arrow"><i class="fa-solid fa-arrow-right-long"></i></div>
-                    
-                    <div class="pipe-node" onclick="showPipelineDetail('pipe1-step3', this)">
-                        <svg viewBox="0 0 24 24" style="width: 50px; fill: url(#canva-grad); margin-bottom: 10px;"><circle cx="12" cy="12" r="10"/></svg>
-                        <h4>3. Canva</h4>
-                        <p style="font-size: 0.9rem; color: var(--text-muted);">Bulk Create</p>
-                    </div>
-                </div>
-
-                <!-- Detail Boxes -->
-                <div id="pipe1-step1" class="pipe-detail-box active">
-                    <h3>Step 1: Mine the Data</h3>
-                    <p style="font-size: 1.1rem; margin-bottom: 1rem;">Upload Developer PDFs. We need raw ammunition.</p>
-                    <div class="prompt-block">"Extract the 10 strongest factual selling points from this document (e.g., ROI, location metrics, unique facilities). Output ONLY facts, no marketing adjectives."</div>
-                </div>
-
-                <div id="pipe1-step2" class="pipe-detail-box" style="border-left-color: var(--brand-gemini);">
-                    <h3>Step 2: Translate for Design</h3>
-                    <p style="font-size: 1.1rem; margin-bottom: 1rem;">Copy facts from NotebookLM into Gemini. Force it into a strict table so Canva can read it.</p>
-                    <div class="prompt-block" style="border-left-color: var(--brand-gemini);">"Format these 10 facts into a CSV table with exactly two columns: [Hook_Headline] and [Subtext_Data]. 
-CRITICAL RULE: Keep text extremely brief (max 8 words per cell) so it fits onto an Instagram square template."</div>
-                </div>
-
-                <div id="pipe1-step3" class="pipe-detail-box" style="border-left-color: var(--brand-canva);">
-                    <h3>Step 3: Visual Scale (The Magic)</h3>
-                    <p style="font-size: 1.1rem; margin-bottom: 1rem;">In Canva, open an IG Post Template with two text boxes.</p>
+            <div class="content-area grid-2">
+                <div class="card" style="border-top: 4px solid var(--accent-blue);">
+                    <i class="fa-solid fa-file-signature main-icon"></i>
+                    <h3>Example 1: The Interactive Proposal</h3>
+                    <p style="font-size: 1.1rem; margin-bottom: 1rem;">NotebookLM extracts ROI data. Gemini drafts the proposal. In the Canvas UI, you don't need to rewrite the whole thing.</p>
                     <ul class="stage-list" style="font-size: 1.1rem;">
-                        <li><i class="fa-solid fa-1"></i> Go to left panel: <strong>Apps -> Search for "Bulk Create"</strong>.</li>
-                        <li><i class="fa-solid fa-2"></i> Select "Enter Data Manually" and paste the CSV table from Gemini.</li>
-                        <li><i class="fa-solid fa-3"></i> Right-click text boxes in your template -> <strong>"Connect Data"</strong> (Link Headline to Headline).</li>
-                        <li><i class="fa-solid fa-4"></i> Click <strong>Generate</strong>. You now have 10 beautifully designed carousel slides instantly.</li>
+                        <li><i class="fa-solid fa-highlighter"></i> <strong>Highlight the Intro:</strong> Click "Make it more professional".</li>
+                        <li><i class="fa-solid fa-highlighter"></i> <strong>Highlight the Closing:</strong> Click "Make it shorter & add CTA".</li>
+                    </ul>
+                </div>
+                <div class="card" style="border-top: 4px solid var(--accent-pink);">
+                    <i class="fa-solid fa-language main-icon" style="color: var(--accent-pink);"></i>
+                    <h3>Example 2: The Translation Hub</h3>
+                    <p style="font-size: 1.1rem; margin-bottom: 1rem;">You have a perfect English project overview in Canvas.</p>
+                    <ul class="stage-list" style="font-size: 1.1rem;">
+                        <li><i class="fa-solid fa-highlighter" style="color: var(--accent-pink);"></i> <strong>Highlight Section A:</strong> "Translate this specifically to Traditional Chinese for a Taiwan buyer."</li>
+                        <li><i class="fa-brands fa-google-drive" style="color: var(--accent-pink);"></i> <strong>One-Click:</strong> Export the perfectly tailored, bilingual document straight to Google Docs.</li>
                     </ul>
                 </div>
             </div>
         </section>
 
-        <!-- Slide 13: Closing -->
+        <!-- Slide 13: Interactive Pipeline (Pitch Deck via Ecosystem) -->
+        <section class="slide">
+            <div>
+                <h2 class="slide-title">The Ultimate Pipeline: Pitch Deck</h2>
+                <span class="slide-subtitle">NotebookLM -> Gemini -> Gemini Canvas -> Google Slides. Click nodes to reveal the SOP.</span>
+            </div>
+            <div class="content-area">
+                <div class="pipeline-flow">
+                    <div class="pipe-node active" onclick="showPipelineDetail('pipe2-step1', this)">
+                        <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" style="width: 40px; fill: var(--brand-notebooklm); margin-bottom: 10px;"><path d="M4 2h14a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm2 4v2h10V6H6zm0 4v2h10v-2H6zm0 4v2h7v-2H6z"/></svg>
+                        <h4>1. NotebookLM</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">Data Extraction</p>
+                    </div>
+                    <div class="pipe-arrow"><i class="fa-solid fa-arrow-right-long"></i></div>
+                    
+                    <div class="pipe-node" onclick="showPipelineDetail('pipe2-step2', this)">
+                        <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" style="width: 40px; fill: url(#gemini-grad); margin-bottom: 10px;"><path d="M12 2L15 9L22 12L15 15L12 22L9 15L2 12L9 9L12 2Z"/></svg>
+                        <h4>2. Gemini Chat</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">Slide Formatting</p>
+                    </div>
+                    <div class="pipe-arrow"><i class="fa-solid fa-arrow-right-long"></i></div>
+
+                    <div class="pipe-node" onclick="showPipelineDetail('pipe2-step3', this)">
+                        <i class="fa-solid fa-pen-ruler pipe-icon" style="color: var(--accent-purple); font-size: 40px;"></i>
+                        <h4>3. Gemini Canvas</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">Refine & Export</p>
+                    </div>
+                </div>
+
+                <!-- Detail Boxes -->
+                <div id="pipe2-step1" class="pipe-detail-box active" style="border-left-color: var(--brand-notebooklm);">
+                    <h3>Step 1: The Foreign Investor Lens</h3>
+                    <p style="font-size: 1.2rem; margin-bottom: 1rem;">Upload the 80-page chaos. Force NotebookLM to extract only the facts.</p>
+                    <div class="prompt-block" style="border-left-color: var(--brand-notebooklm);">"Based strictly on the Clouthaus documents: Identify the top 3 selling points for a **Foreign Investor** focused heavily on rental yield. Ignore all lifestyle fluff. Extract ONLY transit proximity and developer guarantees."</div>
+                </div>
+
+                <div id="pipe2-step2" class="pipe-detail-box" style="border-left-color: var(--brand-gemini);">
+                    <h3>Step 2: Hard Boundaries for Slides</h3>
+                    <p style="font-size: 1.2rem; margin-bottom: 1rem;">Copy NotebookLM's output into Gemini. You MUST force character limits so text doesn't overflow your presentation template.</p>
+                    <div class="prompt-block" style="border-left-color: var(--brand-gemini);">"Convert this verified data into a 5-slide Pitch Deck outline.
+Strict formatting required:
+Slide X: [Main Title]
+- [Bullet point 1 - MAXIMUM 10 words]
+- [Bullet point 2 - MAXIMUM 10 words]"</div>
+                </div>
+
+                <div id="pipe2-step3" class="pipe-detail-box" style="border-left-color: var(--accent-purple);">
+                    <h3>Step 3: Refine in Canvas & Seamless Handoff</h3>
+                    <p style="font-size: 1.2rem; margin-bottom: 1rem;">Open the result in Canvas to do your final checks before exporting.</p>
+                    <ul class="stage-list" style="font-size: 1.1rem;">
+                        <li><i class="fa-solid fa-highlighter" style="color: var(--accent-purple);"></i> Highlight any bullet point that sounds weak and click "Rewrite".</li>
+                        <li><i class="fa-solid fa-share-from-square" style="color: var(--accent-green);"></i> Click the <strong>"Export to Google Slides"</strong> button.</li>
+                        <li><i class="fa-solid fa-wand-magic-sparkles" style="color: var(--accent-blue);"></i> Because you restricted word counts in Step 2, the text fits your PropNex corporate template perfectly. Zero manual resizing.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 14: Closing -->
         <section class="slide">
             <div class="content-area center-text" style="justify-content: center;">
                 <h1 style="font-size: clamp(3rem, 5vw, 4.5rem); line-height: 1.3; font-weight: 800; margin-bottom: 2rem;">"Not taken from one & another.<br><span class="gradient-text">But contribute to one & another.</span>"</h1>
@@ -591,7 +597,7 @@ CRITICAL RULE: Keep text extremely brief (max 8 words per cell) so it fits onto 
         <div id="progress-container">
             <div id="progress-bar"></div>
         </div>
-        <div id="page-indicator">1 / 13</div>
+        <div id="page-indicator">1 / 14</div>
         <button class="nav-btn" id="next-btn" onclick="changeSlide(1)">Next <i class="fa-solid fa-arrow-right"></i></button>
     </div>
 
